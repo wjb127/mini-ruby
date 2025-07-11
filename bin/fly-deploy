@@ -1,0 +1,16 @@
+#!/bin/bash
+set -e
+
+echo "🚀 Fly.io 배포 시작..."
+
+# 환경 변수 설정
+export RAILS_ENV=production
+
+# 빌드 및 배포
+echo "📦 애플리케이션 빌드 및 배포 중..."
+fly deploy
+
+echo "✅ 배포 완료!"
+echo "🌐 애플리케이션 URL: https://mini-ruby.fly.dev"
+echo "📊 상태 확인: fly status -a mini-ruby"
+echo "📝 로그 확인: fly logs -a mini-ruby" 
