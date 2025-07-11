@@ -3,15 +3,16 @@ class Api::TodosController < ApplicationController
   
   # GET /api/todos
   def index
-    @todos = Todo.all.order(created_at: :desc)
+    @todos = current_user ? current_user.todos.order(created_at: :desc) : []
     render json: @todos
   end
   
   # GET /api/todos/stats
   def stats
-    total_count = Todo.count
-    completed_count = Todo.completed.count
-    pending_count = Todo.pending.count
+    user_todos = current_user ? current_user.todos : Todo.none
+    total_count = user_todos.count
+    completed_count = user_todos.completed.count
+    pending_count = user_todos.pending.count
     completion_rate = total_count > 0 ? (completed_count.to_f / total_count * 100).round(1) : 0
     
     render json: {
@@ -29,7 +30,7 @@ class Api::TodosController < ApplicationController
 
   # POST /api/todos
   def create
-    @todo = Todo.new(todo_params)
+    @todo = current_user ? current_user.todos.build(todo_params) : Todo.new(todo_params)
     
     if @todo.save
       render json: @todo, status: :created
@@ -56,7 +57,7 @@ class Api::TodosController < ApplicationController
   private
   
   def set_todo
-    @todo = Todo.find(params[:id])
+    @todo = current_user ? current_user.todos.find(params[:id]) : Todo.find(params[:id])
   rescue ActiveRecord::RecordNotFound
     render json: { error: 'Todo not found' }, status: :not_found
   end

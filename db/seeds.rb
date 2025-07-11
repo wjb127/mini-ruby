@@ -8,13 +8,30 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-# 샘플 할일 데이터 생성
-Todo.create!([
+# 샘플 사용자 생성
+user1 = User.create!(
+  email: "test@example.com",
+  password: "password123",
+  password_confirmation: "password123"
+)
+
+user2 = User.create!(
+  email: "demo@example.com", 
+  password: "password123",
+  password_confirmation: "password123"
+)
+
+# 샘플 할일 데이터 생성 (사용자별)
+user1.todos.create!([
   { title: "루비온 레일즈 학습하기", completed: false },
   { title: "Hotwire 튜토리얼 완료하기", completed: true },
-  { title: "SQLite 데이터베이스 설정하기", completed: true },
-  { title: "REST API 구현하기", completed: false },
-  { title: "프론트엔드와 백엔드 연동하기", completed: false }
+  { title: "SQLite 데이터베이스 설정하기", completed: true }
 ])
 
-puts "샘플 할일 #{Todo.count}개가 생성되었습니다."
+user2.todos.create!([
+  { title: "REST API 구현하기", completed: false },
+  { title: "프론트엔드와 백엔드 연동하기", completed: false },
+  { title: "Sorcery 인증 구현하기", completed: true }
+])
+
+puts "샘플 사용자 #{User.count}명과 할일 #{Todo.count}개가 생성되었습니다."

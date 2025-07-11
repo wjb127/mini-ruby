@@ -1,7 +1,29 @@
 <div class="container" style="max-width: 800px; margin: 0 auto; padding: 20px; font-family: Arial, sans-serif;">
+  <!-- 네비게이션 -->
+  <div style="background: #f8f9fa; padding: 15px; border-radius: 10px; margin-bottom: 30px; display: flex; justify-content: space-between; align-items: center;">
+    <div>
+      <h2 style="margin: 0; color: #2c3e50;">Mini Ruby App</h2>
+    </div>
+    <div>
+      <% if current_user %>
+        <span style="color: #495057; margin-right: 15px;">안녕하세요, <%= current_user.full_name %>님!</span>
+        <%= link_to "프로필", profile_path, style: "color: #007bff; text-decoration: none; margin-right: 15px;" %>
+        <%= link_to "로그아웃", logout_path, method: :delete, style: "color: #dc3545; text-decoration: none;" %>
+      <% else %>
+        <%= link_to "로그인", login_path, style: "color: #007bff; text-decoration: none; margin-right: 15px;" %>
+        <%= link_to "회원가입", signup_path, style: "color: #28a745; text-decoration: none;" %>
+      <% end %>
+    </div>
+  </div>
+
   <div class="header" style="text-align: center; margin-bottom: 30px;">
     <h1 style="color: #2c3e50; margin-bottom: 10px;">Hello World!</h1>
     <p style="color: #7f8c8d; font-size: 18px;">루비온 레일즈로 만든 첫 번째 웹 애플리케이션입니다.</p>
+    <% if current_user %>
+      <p style="color: #28a745; font-weight: bold;">로그인된 사용자만 할일을 관리할 수 있습니다.</p>
+    <% else %>
+      <p style="color: #ffc107; font-weight: bold;">로그인하시면 개인 할일을 관리할 수 있습니다.</p>
+    <% end %>
   </div>
 
   <!-- Stimulus 컨트롤러를 사용한 카운터 -->
@@ -29,17 +51,18 @@
     <% end %>
   </div>
 
-  <!-- 통계 정보 섹션 -->
-  <div data-controller="stats" class="stats-section" style="background: #d1ecf1; padding: 20px; border-radius: 10px; margin-bottom: 30px;">
-    <h3 style="color: #0c5460; margin-bottom: 15px;">할일 통계</h3>
-    <div data-stats-target="display" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 15px; text-align: center;">
-      <!-- 통계 정보가 여기에 동적으로 표시됩니다 -->
+  <% if current_user %>
+    <!-- 통계 정보 섹션 -->
+    <div data-controller="stats" class="stats-section" style="background: #d1ecf1; padding: 20px; border-radius: 10px; margin-bottom: 30px;">
+      <h3 style="color: #0c5460; margin-bottom: 15px;">할일 통계</h3>
+      <div data-stats-target="display" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 15px; text-align: center;">
+        <!-- 통계 정보가 여기에 동적으로 표시됩니다 -->
+      </div>
     </div>
-  </div>
 
-  <!-- Stimulus를 사용한 할일 목록 -->
-  <div data-controller="todo" class="todo-section" style="background: #fff3cd; padding: 20px; border-radius: 10px;">
-    <h3 style="color: #856404; margin-bottom: 15px;">할일 목록</h3>
+    <!-- Stimulus를 사용한 할일 목록 -->
+    <div data-controller="todo" class="todo-section" style="background: #fff3cd; padding: 20px; border-radius: 10px;">
+      <h3 style="color: #856404; margin-bottom: 15px;">할일 목록</h3>
     <div style="margin-bottom: 20px;">
       <input data-todo-target="input" type="text" placeholder="새로운 할일을 입력하세요" 
              data-action="keydown->todo#handleKeydown"
@@ -51,4 +74,15 @@
       <!-- 할일 목록이 여기에 동적으로 추가됩니다 -->
     </ul>
   </div>
+  <% else %>
+    <!-- 로그인하지 않은 사용자를 위한 안내 -->
+    <div style="background: #e2e3e5; padding: 40px; border-radius: 10px; text-align: center;">
+      <h3 style="color: #495057; margin-bottom: 20px;">로그인이 필요합니다</h3>
+      <p style="color: #6c757d; margin-bottom: 30px;">할일 관리 기능을 사용하려면 로그인하거나 회원가입을 해주세요.</p>
+      <div>
+        <%= link_to "로그인", login_path, style: "background: #007bff; color: white; padding: 12px 24px; text-decoration: none; border-radius: 5px; margin-right: 10px; display: inline-block;" %>
+        <%= link_to "회원가입", signup_path, style: "background: #28a745; color: white; padding: 12px 24px; text-decoration: none; border-radius: 5px; display: inline-block;" %>
+      </div>
+    </div>
+  <% end %>
 </div>

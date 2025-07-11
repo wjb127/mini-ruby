@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  # 인증 관련 라우트
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  delete 'logout', to: 'sessions#destroy'
+  get 'signup', to: 'users#new'
+  post 'signup', to: 'users#create'
+  get 'profile', to: 'users#show'
+  
   namespace :api do
     resources :todos, only: [:index, :show, :create, :update, :destroy] do
       collection do
@@ -6,6 +14,7 @@ Rails.application.routes.draw do
       end
     end
   end
+  
   get "home/index"
   get "update_time", to: "home#update_time"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

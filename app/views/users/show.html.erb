@@ -1,0 +1,42 @@
+<div class="container" style="max-width: 600px; margin: 50px auto; padding: 20px; font-family: Arial, sans-serif;">
+  <div style="text-align: center; margin-bottom: 30px;">
+    <h1 style="color: #2c3e50; margin-bottom: 10px;">프로필</h1>
+    <p style="color: #7f8c8d;">계정 정보</p>
+  </div>
+
+  <div style="background: #f8f9fa; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+    <div style="margin-bottom: 20px;">
+      <label style="display: block; margin-bottom: 5px; font-weight: bold; color: #495057;">이메일</label>
+      <div style="padding: 12px; background: white; border: 1px solid #ddd; border-radius: 5px; color: #495057;">
+        <%= @user.email %>
+      </div>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+      <label style="display: block; margin-bottom: 5px; font-weight: bold; color: #495057;">사용자명</label>
+      <div style="padding: 12px; background: white; border: 1px solid #ddd; border-radius: 5px; color: #495057;">
+        <%= @user.full_name %>
+      </div>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+      <label style="display: block; margin-bottom: 5px; font-weight: bold; color: #495057;">가입일</label>
+      <div style="padding: 12px; background: white; border: 1px solid #ddd; border-radius: 5px; color: #495057;">
+        <%= @user.created_at.strftime("%Y년 %m월 %d일") %>
+      </div>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+      <label style="display: block; margin-bottom: 5px; font-weight: bold; color: #495057;">할일 통계</label>
+      <div style="padding: 12px; background: white; border: 1px solid #ddd; border-radius: 5px; color: #495057;">
+        전체: <%= @user.todos.count %>개 | 
+        완료: <%= @user.todos.completed.count %>개 | 
+        대기: <%= @user.todos.pending.count %>개
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align: center; margin-top: 30px;">
+    <%= link_to "← 메인으로 돌아가기", root_path, style: "background: #007bff; color: white; padding: 12px 24px; text-decoration: none; border-radius: 5px; display: inline-block;" %>
+  </div>
+</div>

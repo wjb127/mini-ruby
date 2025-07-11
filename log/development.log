@@ -248,3 +248,1815 @@ Processing by HomeController#index as */*
 Completed 200 OK in 22ms (Views: 6.3ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.3ms)
 
 
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='HelloWorldApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='HelloWorldApp'*/[0m
+Migrating to SorceryCore (20250711034529)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='HelloWorldApp'*/[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar NOT NULL, "crypted_password" varchar, "salt" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='HelloWorldApp'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email") /*application='HelloWorldApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250711034529') RETURNING "version" /*application='HelloWorldApp'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='HelloWorldApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='HelloWorldApp'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='HelloWorldApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='HelloWorldApp'*/[0m
+Migrating to AddUserIdToTodos (20250711034618)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='HelloWorldApp'*/[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[35mPRAGMA foreign_keys /*application='HelloWorldApp'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys /*application='HelloWorldApp'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON /*application='HelloWorldApp'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF /*application='HelloWorldApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "atodos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "completed" boolean, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='HelloWorldApp'*/[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "atodos" ("id","title","completed","created_at","updated_at")
+                     SELECT "id","title","completed","created_at","updated_at" FROM "todos" /*application='HelloWorldApp'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE "todos" /*application='HelloWorldApp'*/[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "todos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "completed" boolean, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "user_id" integer NOT NULL) /*application='HelloWorldApp'*/[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "todos" ("id","title","completed","created_at","updated_at")
+                     SELECT "id","title","completed","created_at","updated_at" FROM "atodos" /*application='HelloWorldApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0 /*application='HelloWorldApp'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1 /*application='HelloWorldApp'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK TRANSACTION /*application='HelloWorldApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='HelloWorldApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='HelloWorldApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='HelloWorldApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='HelloWorldApp'*/[0m
+Migrating to SorceryCore (20250711034529)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='HelloWorldApp'*/[0m
+  [1m[35m (0.8ms)[0m  [1m[35mDROP TABLE "users" /*application='HelloWorldApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.0ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20250711034529' /*application='HelloWorldApp'*/[0m
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='HelloWorldApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='HelloWorldApp'*/[0m
+Started GET "/" for ::1 at 2025-07-12 00:34:22 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='HelloWorldApp'*/[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate
+
+You have 2 pending migrations:
+
+db/migrate/20250711034529_sorcery_core.rb
+db/migrate/20250711034618_add_user_id_to_todos.rb
+
+
+):
+  
+activerecord (8.0.2) lib/active_record/migration.rb:743:in `check_pending_migrations'
+activerecord (8.0.2) lib/active_record/migration.rb:660:in `block (2 levels) in call'
+activesupport (8.0.2) lib/active_support/file_update_checker.rb:85:in `execute'
+activesupport (8.0.2) lib/active_support/file_update_checker.rb:95:in `execute_if_updated'
+activerecord (8.0.2) lib/active_record/migration.rb:667:in `block in call'
+activerecord (8.0.2) lib/active_record/migration.rb:657:in `synchronize'
+activerecord (8.0.2) lib/active_record/migration.rb:657:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/callbacks.rb:31:in `block in call'
+activesupport (8.0.2) lib/active_support/callbacks.rb:100:in `run_callbacks'
+actionpack (8.0.2) lib/action_dispatch/middleware/callbacks.rb:30:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/executor.rb:16:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:31:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/show_exceptions.rb:32:in `call'
+railties (8.0.2) lib/rails/rack/logger.rb:41:in `call_app'
+railties (8.0.2) lib/rails/rack/logger.rb:29:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/remote_ip.rb:96:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/request_id.rb:34:in `call'
+rack (3.1.16) lib/rack/method_override.rb:28:in `call'
+rack (3.1.16) lib/rack/runtime.rb:24:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (8.0.2) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (8.0.2) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/executor.rb:16:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/static.rb:27:in `call'
+rack (3.1.16) lib/rack/sendfile.rb:114:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/host_authorization.rb:143:in `call'
+railties (8.0.2) lib/rails/engine.rb:535:in `call'
+puma (6.6.0) lib/puma/configuration.rb:279:in `call'
+puma (6.6.0) lib/puma/request.rb:99:in `block in handle_request'
+puma (6.6.0) lib/puma/thread_pool.rb:390:in `with_force_shutdown'
+puma (6.6.0) lib/puma/request.rb:98:in `handle_request'
+puma (6.6.0) lib/puma/server.rb:472:in `process_client'
+puma (6.6.0) lib/puma/server.rb:254:in `block in run'
+puma (6.6.0) lib/puma/thread_pool.rb:167:in `block in spawn_thread'
+Started GET "/favicon.ico" for ::1 at 2025-07-12 00:34:22 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='HelloWorldApp'*/[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate
+
+You have 2 pending migrations:
+
+db/migrate/20250711034529_sorcery_core.rb
+db/migrate/20250711034618_add_user_id_to_todos.rb
+
+
+):
+  
+activerecord (8.0.2) lib/active_record/migration.rb:743:in `check_pending_migrations'
+activerecord (8.0.2) lib/active_record/migration.rb:660:in `block (2 levels) in call'
+activesupport (8.0.2) lib/active_support/file_update_checker.rb:85:in `execute'
+activerecord (8.0.2) lib/active_record/migration.rb:665:in `block in call'
+activerecord (8.0.2) lib/active_record/migration.rb:657:in `synchronize'
+activerecord (8.0.2) lib/active_record/migration.rb:657:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/callbacks.rb:31:in `block in call'
+activesupport (8.0.2) lib/active_support/callbacks.rb:100:in `run_callbacks'
+actionpack (8.0.2) lib/action_dispatch/middleware/callbacks.rb:30:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/executor.rb:16:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:31:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/show_exceptions.rb:32:in `call'
+railties (8.0.2) lib/rails/rack/logger.rb:41:in `call_app'
+railties (8.0.2) lib/rails/rack/logger.rb:29:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/remote_ip.rb:96:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/request_id.rb:34:in `call'
+rack (3.1.16) lib/rack/method_override.rb:28:in `call'
+rack (3.1.16) lib/rack/runtime.rb:24:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (8.0.2) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (8.0.2) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/executor.rb:16:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/static.rb:27:in `call'
+rack (3.1.16) lib/rack/sendfile.rb:114:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/host_authorization.rb:143:in `call'
+railties (8.0.2) lib/rails/engine.rb:535:in `call'
+puma (6.6.0) lib/puma/configuration.rb:279:in `call'
+puma (6.6.0) lib/puma/request.rb:99:in `block in handle_request'
+puma (6.6.0) lib/puma/thread_pool.rb:390:in `with_force_shutdown'
+puma (6.6.0) lib/puma/request.rb:98:in `handle_request'
+puma (6.6.0) lib/puma/server.rb:472:in `process_client'
+puma (6.6.0) lib/puma/server.rb:254:in `block in run'
+puma (6.6.0) lib/puma/thread_pool.rb:167:in `block in spawn_thread'
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='HelloWorldApp'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='HelloWorldApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='HelloWorldApp'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='HelloWorldApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='HelloWorldApp'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='HelloWorldApp'*/[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "todos" /*application='HelloWorldApp'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "todos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "completed" boolean, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='HelloWorldApp'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY) /*application='HelloWorldApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='HelloWorldApp'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20250711034033) /*application='HelloWorldApp'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='HelloWorldApp'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='HelloWorldApp'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.0ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2025-07-11 15:34:23.822959', '2025-07-11 15:34:23.822959') RETURNING "key" /*application='HelloWorldApp'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='HelloWorldApp'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'schema_sha1' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='HelloWorldApp'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.0ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('schema_sha1', 'c0ef28b626578c42eb1adebec22e987910b58b2e', '2025-07-11 15:34:23.824854', '2025-07-11 15:34:23.824854') RETURNING "key" /*application='HelloWorldApp'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='HelloWorldApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='HelloWorldApp'*/[0m
+Migrating to SorceryCore (20250711034529)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='HelloWorldApp'*/[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar NOT NULL, "crypted_password" varchar, "salt" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='HelloWorldApp'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email") /*application='HelloWorldApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250711034529') RETURNING "version" /*application='HelloWorldApp'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='HelloWorldApp'*/[0m
+Migrating to AddUserIdToTodos (20250711034618)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='HelloWorldApp'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[35mPRAGMA foreign_keys /*application='HelloWorldApp'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys /*application='HelloWorldApp'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON /*application='HelloWorldApp'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF /*application='HelloWorldApp'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE TEMPORARY TABLE "atodos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "completed" boolean, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='HelloWorldApp'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "atodos" ("id","title","completed","created_at","updated_at")
+                     SELECT "id","title","completed","created_at","updated_at" FROM "todos" /*application='HelloWorldApp'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE "todos" /*application='HelloWorldApp'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE TABLE "todos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "completed" boolean, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "user_id" integer NOT NULL) /*application='HelloWorldApp'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "todos" ("id","title","completed","created_at","updated_at")
+                     SELECT "id","title","completed","created_at","updated_at" FROM "atodos" /*application='HelloWorldApp'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE "atodos" /*application='HelloWorldApp'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0 /*application='HelloWorldApp'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1 /*application='HelloWorldApp'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_todos_on_user_id" ON "todos" ("user_id") /*application='HelloWorldApp'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[35mPRAGMA foreign_keys /*application='HelloWorldApp'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys /*application='HelloWorldApp'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON /*application='HelloWorldApp'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF /*application='HelloWorldApp'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE TEMPORARY TABLE "atodos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "completed" boolean, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "user_id" integer NOT NULL) /*application='HelloWorldApp'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "tindex_atodos_on_user_id" ON "atodos" ("user_id") /*application='HelloWorldApp'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "atodos" ("id","title","completed","created_at","updated_at","user_id")
+                     SELECT "id","title","completed","created_at","updated_at","user_id" FROM "todos" /*application='HelloWorldApp'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE "todos" /*application='HelloWorldApp'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE TABLE "todos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "completed" boolean, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "user_id" integer NOT NULL, CONSTRAINT "fk_rails_d94154aa95"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+) /*application='HelloWorldApp'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_todos_on_user_id" ON "todos" ("user_id") /*application='HelloWorldApp'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "todos" ("id","title","completed","created_at","updated_at","user_id")
+                     SELECT "id","title","completed","created_at","updated_at","user_id" FROM "atodos" /*application='HelloWorldApp'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE "atodos" /*application='HelloWorldApp'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0 /*application='HelloWorldApp'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1 /*application='HelloWorldApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250711034618') RETURNING "version" /*application='HelloWorldApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='HelloWorldApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='HelloWorldApp'*/[0m
+Started GET "/" for ::1 at 2025-07-12 00:34:25 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='HelloWorldApp'*/[0m
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.4ms | GC: 0.2ms)
+Completed 200 OK in 24ms (Views: 5.7ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/assets/controllers/stats_controller-d4288676.js" for ::1 at 2025-07-12 00:34:25 +0900
+Started GET "/assets/controllers/todo_controller-8fd6b3ba.js" for ::1 at 2025-07-12 00:34:25 +0900
+Started GET "/api/todos/stats" for ::1 at 2025-07-12 00:34:25 +0900
+Started GET "/api/todos" for ::1 at 2025-07-12 00:34:25 +0900
+Processing by Api::TodosController#stats as */*
+Processing by Api::TodosController#index as */*
+  [1m[36mTodo Count (1.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:12:in `stats'
+  [1m[36mTodo Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."completed" = 1 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:13:in `stats'
+  [1m[36mTodo Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."completed" = 0 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:14:in `stats'
+Completed 200 OK in 69ms (Views: 0.2ms | ActiveRecord: 1.2ms (3 queries, 0 cached) | GC: 0.6ms)
+
+
+  [1m[36mTodo Load (0.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY "todos"."created_at" DESC /*action='index',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:7:in `index'
+Completed 200 OK in 70ms (Views: 1.2ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.6ms)
+
+
+Started GET "/api/todos/stats" for ::1 at 2025-07-12 00:34:30 +0900
+Processing by Api::TodosController#stats as */*
+  [1m[36mTodo Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:12:in `stats'
+  [1m[36mTodo Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."completed" = 1 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:13:in `stats'
+  [1m[36mTodo Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."completed" = 0 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:14:in `stats'
+Completed 200 OK in 23ms (Views: 0.1ms | ActiveRecord: 0.2ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/todos/stats" for ::1 at 2025-07-12 00:34:35 +0900
+Processing by Api::TodosController#stats as */*
+  [1m[36mTodo Count (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:12:in `stats'
+  [1m[36mTodo Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."completed" = 1 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:13:in `stats'
+  [1m[36mTodo Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."completed" = 0 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:14:in `stats'
+Completed 200 OK in 30ms (Views: 0.3ms | ActiveRecord: 0.9ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/todos/stats" for ::1 at 2025-07-12 00:34:40 +0900
+Processing by Api::TodosController#stats as */*
+  [1m[36mTodo Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:12:in `stats'
+  [1m[36mTodo Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."completed" = 1 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:13:in `stats'
+  [1m[36mTodo Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."completed" = 0 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:14:in `stats'
+Completed 200 OK in 26ms (Views: 0.0ms | ActiveRecord: 0.2ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/todos/stats" for ::1 at 2025-07-12 00:34:45 +0900
+Processing by Api::TodosController#stats as */*
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.3ms)
+
+
+  
+NoMethodError (undefined method `require_login' for an instance of Api::TodosController):
+  
+railties (8.0.2) lib/rails/engine/lazy_route_set.rb:99:in `method_missing'
+activesupport (8.0.2) lib/active_support/callbacks.rb:361:in `block in make_lambda'
+activesupport (8.0.2) lib/active_support/callbacks.rb:178:in `block in call'
+actionpack (8.0.2) lib/abstract_controller/callbacks.rb:34:in `block (2 levels) in <module:Callbacks>'
+activesupport (8.0.2) lib/active_support/callbacks.rb:179:in `call'
+activesupport (8.0.2) lib/active_support/callbacks.rb:559:in `block in invoke_before'
+activesupport (8.0.2) lib/active_support/callbacks.rb:559:in `each'
+activesupport (8.0.2) lib/active_support/callbacks.rb:559:in `invoke_before'
+activesupport (8.0.2) lib/active_support/callbacks.rb:118:in `block in run_callbacks'
+turbo-rails (2.0.16) lib/turbo-rails.rb:24:in `with_request_id'
+turbo-rails (2.0.16) app/controllers/concerns/turbo/request_id_tracking.rb:10:in `turbo_tracking_request_id'
+activesupport (8.0.2) lib/active_support/callbacks.rb:129:in `block in run_callbacks'
+actiontext (8.0.2) lib/action_text/rendering.rb:25:in `with_renderer'
+actiontext (8.0.2) lib/action_text/engine.rb:71:in `block (4 levels) in <class:Engine>'
+activesupport (8.0.2) lib/active_support/callbacks.rb:129:in `instance_exec'
+activesupport (8.0.2) lib/active_support/callbacks.rb:129:in `block in run_callbacks'
+activesupport (8.0.2) lib/active_support/callbacks.rb:140:in `run_callbacks'
+actionpack (8.0.2) lib/abstract_controller/callbacks.rb:260:in `process_action'
+actionpack (8.0.2) lib/action_controller/metal/rescue.rb:27:in `process_action'
+actionpack (8.0.2) lib/action_controller/metal/instrumentation.rb:76:in `block in process_action'
+activesupport (8.0.2) lib/active_support/notifications.rb:210:in `block in instrument'
+activesupport (8.0.2) lib/active_support/notifications/instrumenter.rb:58:in `instrument'
+activesupport (8.0.2) lib/active_support/notifications.rb:210:in `instrument'
+actionpack (8.0.2) lib/action_controller/metal/instrumentation.rb:75:in `process_action'
+actionpack (8.0.2) lib/action_controller/metal/params_wrapper.rb:259:in `process_action'
+activerecord (8.0.2) lib/active_record/railties/controller_runtime.rb:39:in `process_action'
+actionpack (8.0.2) lib/abstract_controller/base.rb:163:in `process'
+actionview (8.0.2) lib/action_view/rendering.rb:40:in `process'
+actionpack (8.0.2) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (8.0.2) lib/action_controller/metal.rb:335:in `dispatch'
+actionpack (8.0.2) lib/action_dispatch/routing/route_set.rb:67:in `dispatch'
+actionpack (8.0.2) lib/action_dispatch/routing/route_set.rb:50:in `serve'
+actionpack (8.0.2) lib/action_dispatch/journey/router.rb:53:in `block in serve'
+actionpack (8.0.2) lib/action_dispatch/journey/router.rb:133:in `block in find_routes'
+actionpack (8.0.2) lib/action_dispatch/journey/router.rb:126:in `each'
+actionpack (8.0.2) lib/action_dispatch/journey/router.rb:126:in `find_routes'
+actionpack (8.0.2) lib/action_dispatch/journey/router.rb:34:in `serve'
+actionpack (8.0.2) lib/action_dispatch/routing/route_set.rb:908:in `call'
+railties (8.0.2) lib/rails/engine/lazy_route_set.rb:68:in `call'
+rack (3.1.16) lib/rack/tempfile_reaper.rb:20:in `call'
+rack (3.1.16) lib/rack/etag.rb:29:in `call'
+rack (3.1.16) lib/rack/conditional_get.rb:31:in `call'
+rack (3.1.16) lib/rack/head.rb:15:in `call'
+actionpack (8.0.2) lib/action_dispatch/http/permissions_policy.rb:38:in `call'
+actionpack (8.0.2) lib/action_dispatch/http/content_security_policy.rb:38:in `call'
+rack-session (2.1.1) lib/rack/session/abstract/id.rb:274:in `context'
+rack-session (2.1.1) lib/rack/session/abstract/id.rb:268:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/cookies.rb:706:in `call'
+activerecord (8.0.2) lib/active_record/migration.rb:671:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/callbacks.rb:31:in `block in call'
+activesupport (8.0.2) lib/active_support/callbacks.rb:100:in `run_callbacks'
+actionpack (8.0.2) lib/action_dispatch/middleware/callbacks.rb:30:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/executor.rb:16:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:31:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/show_exceptions.rb:32:in `call'
+railties (8.0.2) lib/rails/rack/logger.rb:41:in `call_app'
+railties (8.0.2) lib/rails/rack/logger.rb:29:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/remote_ip.rb:96:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/request_id.rb:34:in `call'
+rack (3.1.16) lib/rack/method_override.rb:28:in `call'
+rack (3.1.16) lib/rack/runtime.rb:24:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (8.0.2) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (8.0.2) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/executor.rb:16:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/static.rb:27:in `call'
+rack (3.1.16) lib/rack/sendfile.rb:114:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/host_authorization.rb:143:in `call'
+railties (8.0.2) lib/rails/engine.rb:535:in `call'
+puma (6.6.0) lib/puma/configuration.rb:279:in `call'
+puma (6.6.0) lib/puma/request.rb:99:in `block in handle_request'
+puma (6.6.0) lib/puma/thread_pool.rb:390:in `with_force_shutdown'
+puma (6.6.0) lib/puma/request.rb:98:in `handle_request'
+puma (6.6.0) lib/puma/server.rb:472:in `process_client'
+puma (6.6.0) lib/puma/server.rb:254:in `block in run'
+puma (6.6.0) lib/puma/thread_pool.rb:167:in `block in spawn_thread'
+Started GET "/api/todos/stats" for ::1 at 2025-07-12 00:34:50 +0900
+Processing by Api::TodosController#stats as */*
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.2ms)
+
+
+  
+NoMethodError (undefined method `require_login' for an instance of Api::TodosController):
+  
+railties (8.0.2) lib/rails/engine/lazy_route_set.rb:99:in `method_missing'
+activesupport (8.0.2) lib/active_support/callbacks.rb:361:in `block in make_lambda'
+activesupport (8.0.2) lib/active_support/callbacks.rb:178:in `block in call'
+actionpack (8.0.2) lib/abstract_controller/callbacks.rb:34:in `block (2 levels) in <module:Callbacks>'
+activesupport (8.0.2) lib/active_support/callbacks.rb:179:in `call'
+activesupport (8.0.2) lib/active_support/callbacks.rb:559:in `block in invoke_before'
+activesupport (8.0.2) lib/active_support/callbacks.rb:559:in `each'
+activesupport (8.0.2) lib/active_support/callbacks.rb:559:in `invoke_before'
+activesupport (8.0.2) lib/active_support/callbacks.rb:118:in `block in run_callbacks'
+turbo-rails (2.0.16) lib/turbo-rails.rb:24:in `with_request_id'
+turbo-rails (2.0.16) app/controllers/concerns/turbo/request_id_tracking.rb:10:in `turbo_tracking_request_id'
+activesupport (8.0.2) lib/active_support/callbacks.rb:129:in `block in run_callbacks'
+actiontext (8.0.2) lib/action_text/rendering.rb:25:in `with_renderer'
+actiontext (8.0.2) lib/action_text/engine.rb:71:in `block (4 levels) in <class:Engine>'
+activesupport (8.0.2) lib/active_support/callbacks.rb:129:in `instance_exec'
+activesupport (8.0.2) lib/active_support/callbacks.rb:129:in `block in run_callbacks'
+activesupport (8.0.2) lib/active_support/callbacks.rb:140:in `run_callbacks'
+actionpack (8.0.2) lib/abstract_controller/callbacks.rb:260:in `process_action'
+actionpack (8.0.2) lib/action_controller/metal/rescue.rb:27:in `process_action'
+actionpack (8.0.2) lib/action_controller/metal/instrumentation.rb:76:in `block in process_action'
+activesupport (8.0.2) lib/active_support/notifications.rb:210:in `block in instrument'
+activesupport (8.0.2) lib/active_support/notifications/instrumenter.rb:58:in `instrument'
+activesupport (8.0.2) lib/active_support/notifications.rb:210:in `instrument'
+actionpack (8.0.2) lib/action_controller/metal/instrumentation.rb:75:in `process_action'
+actionpack (8.0.2) lib/action_controller/metal/params_wrapper.rb:259:in `process_action'
+activerecord (8.0.2) lib/active_record/railties/controller_runtime.rb:39:in `process_action'
+actionpack (8.0.2) lib/abstract_controller/base.rb:163:in `process'
+actionview (8.0.2) lib/action_view/rendering.rb:40:in `process'
+actionpack (8.0.2) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (8.0.2) lib/action_controller/metal.rb:335:in `dispatch'
+actionpack (8.0.2) lib/action_dispatch/routing/route_set.rb:67:in `dispatch'
+actionpack (8.0.2) lib/action_dispatch/routing/route_set.rb:50:in `serve'
+actionpack (8.0.2) lib/action_dispatch/journey/router.rb:53:in `block in serve'
+actionpack (8.0.2) lib/action_dispatch/journey/router.rb:133:in `block in find_routes'
+actionpack (8.0.2) lib/action_dispatch/journey/router.rb:126:in `each'
+actionpack (8.0.2) lib/action_dispatch/journey/router.rb:126:in `find_routes'
+actionpack (8.0.2) lib/action_dispatch/journey/router.rb:34:in `serve'
+actionpack (8.0.2) lib/action_dispatch/routing/route_set.rb:908:in `call'
+railties (8.0.2) lib/rails/engine/lazy_route_set.rb:68:in `call'
+rack (3.1.16) lib/rack/tempfile_reaper.rb:20:in `call'
+rack (3.1.16) lib/rack/etag.rb:29:in `call'
+rack (3.1.16) lib/rack/conditional_get.rb:31:in `call'
+rack (3.1.16) lib/rack/head.rb:15:in `call'
+actionpack (8.0.2) lib/action_dispatch/http/permissions_policy.rb:38:in `call'
+actionpack (8.0.2) lib/action_dispatch/http/content_security_policy.rb:38:in `call'
+rack-session (2.1.1) lib/rack/session/abstract/id.rb:274:in `context'
+rack-session (2.1.1) lib/rack/session/abstract/id.rb:268:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/cookies.rb:706:in `call'
+activerecord (8.0.2) lib/active_record/migration.rb:671:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/callbacks.rb:31:in `block in call'
+activesupport (8.0.2) lib/active_support/callbacks.rb:100:in `run_callbacks'
+actionpack (8.0.2) lib/action_dispatch/middleware/callbacks.rb:30:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/executor.rb:16:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:31:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/show_exceptions.rb:32:in `call'
+railties (8.0.2) lib/rails/rack/logger.rb:41:in `call_app'
+railties (8.0.2) lib/rails/rack/logger.rb:29:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/remote_ip.rb:96:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/request_id.rb:34:in `call'
+rack (3.1.16) lib/rack/method_override.rb:28:in `call'
+rack (3.1.16) lib/rack/runtime.rb:24:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (8.0.2) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (8.0.2) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/executor.rb:16:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/static.rb:27:in `call'
+rack (3.1.16) lib/rack/sendfile.rb:114:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/host_authorization.rb:143:in `call'
+railties (8.0.2) lib/rails/engine.rb:535:in `call'
+puma (6.6.0) lib/puma/configuration.rb:279:in `call'
+puma (6.6.0) lib/puma/request.rb:99:in `block in handle_request'
+puma (6.6.0) lib/puma/thread_pool.rb:390:in `with_force_shutdown'
+puma (6.6.0) lib/puma/request.rb:98:in `handle_request'
+puma (6.6.0) lib/puma/server.rb:472:in `process_client'
+puma (6.6.0) lib/puma/server.rb:254:in `block in run'
+puma (6.6.0) lib/puma/thread_pool.rb:167:in `block in spawn_thread'
+Started GET "/api/todos/stats" for ::1 at 2025-07-12 00:34:55 +0900
+Processing by Api::TodosController#stats as */*
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+NoMethodError (undefined method `require_login' for an instance of Api::TodosController):
+  
+railties (8.0.2) lib/rails/engine/lazy_route_set.rb:99:in `method_missing'
+activesupport (8.0.2) lib/active_support/callbacks.rb:361:in `block in make_lambda'
+activesupport (8.0.2) lib/active_support/callbacks.rb:178:in `block in call'
+actionpack (8.0.2) lib/abstract_controller/callbacks.rb:34:in `block (2 levels) in <module:Callbacks>'
+activesupport (8.0.2) lib/active_support/callbacks.rb:179:in `call'
+activesupport (8.0.2) lib/active_support/callbacks.rb:559:in `block in invoke_before'
+activesupport (8.0.2) lib/active_support/callbacks.rb:559:in `each'
+activesupport (8.0.2) lib/active_support/callbacks.rb:559:in `invoke_before'
+activesupport (8.0.2) lib/active_support/callbacks.rb:118:in `block in run_callbacks'
+turbo-rails (2.0.16) lib/turbo-rails.rb:24:in `with_request_id'
+turbo-rails (2.0.16) app/controllers/concerns/turbo/request_id_tracking.rb:10:in `turbo_tracking_request_id'
+activesupport (8.0.2) lib/active_support/callbacks.rb:129:in `block in run_callbacks'
+actiontext (8.0.2) lib/action_text/rendering.rb:25:in `with_renderer'
+actiontext (8.0.2) lib/action_text/engine.rb:71:in `block (4 levels) in <class:Engine>'
+activesupport (8.0.2) lib/active_support/callbacks.rb:129:in `instance_exec'
+activesupport (8.0.2) lib/active_support/callbacks.rb:129:in `block in run_callbacks'
+activesupport (8.0.2) lib/active_support/callbacks.rb:140:in `run_callbacks'
+actionpack (8.0.2) lib/abstract_controller/callbacks.rb:260:in `process_action'
+actionpack (8.0.2) lib/action_controller/metal/rescue.rb:27:in `process_action'
+actionpack (8.0.2) lib/action_controller/metal/instrumentation.rb:76:in `block in process_action'
+activesupport (8.0.2) lib/active_support/notifications.rb:210:in `block in instrument'
+activesupport (8.0.2) lib/active_support/notifications/instrumenter.rb:58:in `instrument'
+activesupport (8.0.2) lib/active_support/notifications.rb:210:in `instrument'
+actionpack (8.0.2) lib/action_controller/metal/instrumentation.rb:75:in `process_action'
+actionpack (8.0.2) lib/action_controller/metal/params_wrapper.rb:259:in `process_action'
+activerecord (8.0.2) lib/active_record/railties/controller_runtime.rb:39:in `process_action'
+actionpack (8.0.2) lib/abstract_controller/base.rb:163:in `process'
+actionview (8.0.2) lib/action_view/rendering.rb:40:in `process'
+actionpack (8.0.2) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (8.0.2) lib/action_controller/metal.rb:335:in `dispatch'
+actionpack (8.0.2) lib/action_dispatch/routing/route_set.rb:67:in `dispatch'
+actionpack (8.0.2) lib/action_dispatch/routing/route_set.rb:50:in `serve'
+actionpack (8.0.2) lib/action_dispatch/journey/router.rb:53:in `block in serve'
+actionpack (8.0.2) lib/action_dispatch/journey/router.rb:133:in `block in find_routes'
+actionpack (8.0.2) lib/action_dispatch/journey/router.rb:126:in `each'
+actionpack (8.0.2) lib/action_dispatch/journey/router.rb:126:in `find_routes'
+actionpack (8.0.2) lib/action_dispatch/journey/router.rb:34:in `serve'
+actionpack (8.0.2) lib/action_dispatch/routing/route_set.rb:908:in `call'
+railties (8.0.2) lib/rails/engine/lazy_route_set.rb:68:in `call'
+rack (3.1.16) lib/rack/tempfile_reaper.rb:20:in `call'
+rack (3.1.16) lib/rack/etag.rb:29:in `call'
+rack (3.1.16) lib/rack/conditional_get.rb:31:in `call'
+rack (3.1.16) lib/rack/head.rb:15:in `call'
+actionpack (8.0.2) lib/action_dispatch/http/permissions_policy.rb:38:in `call'
+actionpack (8.0.2) lib/action_dispatch/http/content_security_policy.rb:38:in `call'
+rack-session (2.1.1) lib/rack/session/abstract/id.rb:274:in `context'
+rack-session (2.1.1) lib/rack/session/abstract/id.rb:268:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/cookies.rb:706:in `call'
+activerecord (8.0.2) lib/active_record/migration.rb:671:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/callbacks.rb:31:in `block in call'
+activesupport (8.0.2) lib/active_support/callbacks.rb:100:in `run_callbacks'
+actionpack (8.0.2) lib/action_dispatch/middleware/callbacks.rb:30:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/executor.rb:16:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:31:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/show_exceptions.rb:32:in `call'
+railties (8.0.2) lib/rails/rack/logger.rb:41:in `call_app'
+railties (8.0.2) lib/rails/rack/logger.rb:29:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/remote_ip.rb:96:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/request_id.rb:34:in `call'
+rack (3.1.16) lib/rack/method_override.rb:28:in `call'
+rack (3.1.16) lib/rack/runtime.rb:24:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (8.0.2) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (8.0.2) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/executor.rb:16:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/static.rb:27:in `call'
+rack (3.1.16) lib/rack/sendfile.rb:114:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/host_authorization.rb:143:in `call'
+railties (8.0.2) lib/rails/engine.rb:535:in `call'
+puma (6.6.0) lib/puma/configuration.rb:279:in `call'
+puma (6.6.0) lib/puma/request.rb:99:in `block in handle_request'
+puma (6.6.0) lib/puma/thread_pool.rb:390:in `with_force_shutdown'
+puma (6.6.0) lib/puma/request.rb:98:in `handle_request'
+puma (6.6.0) lib/puma/server.rb:472:in `process_client'
+puma (6.6.0) lib/puma/server.rb:254:in `block in run'
+puma (6.6.0) lib/puma/thread_pool.rb:167:in `block in spawn_thread'
+Started GET "/api/todos/stats" for ::1 at 2025-07-12 00:35:00 +0900
+Processing by Api::TodosController#stats as */*
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+NoMethodError (undefined method `require_login' for an instance of Api::TodosController):
+  
+railties (8.0.2) lib/rails/engine/lazy_route_set.rb:99:in `method_missing'
+activesupport (8.0.2) lib/active_support/callbacks.rb:361:in `block in make_lambda'
+activesupport (8.0.2) lib/active_support/callbacks.rb:178:in `block in call'
+actionpack (8.0.2) lib/abstract_controller/callbacks.rb:34:in `block (2 levels) in <module:Callbacks>'
+activesupport (8.0.2) lib/active_support/callbacks.rb:179:in `call'
+activesupport (8.0.2) lib/active_support/callbacks.rb:559:in `block in invoke_before'
+activesupport (8.0.2) lib/active_support/callbacks.rb:559:in `each'
+activesupport (8.0.2) lib/active_support/callbacks.rb:559:in `invoke_before'
+activesupport (8.0.2) lib/active_support/callbacks.rb:118:in `block in run_callbacks'
+turbo-rails (2.0.16) lib/turbo-rails.rb:24:in `with_request_id'
+turbo-rails (2.0.16) app/controllers/concerns/turbo/request_id_tracking.rb:10:in `turbo_tracking_request_id'
+activesupport (8.0.2) lib/active_support/callbacks.rb:129:in `block in run_callbacks'
+actiontext (8.0.2) lib/action_text/rendering.rb:25:in `with_renderer'
+actiontext (8.0.2) lib/action_text/engine.rb:71:in `block (4 levels) in <class:Engine>'
+activesupport (8.0.2) lib/active_support/callbacks.rb:129:in `instance_exec'
+activesupport (8.0.2) lib/active_support/callbacks.rb:129:in `block in run_callbacks'
+activesupport (8.0.2) lib/active_support/callbacks.rb:140:in `run_callbacks'
+actionpack (8.0.2) lib/abstract_controller/callbacks.rb:260:in `process_action'
+actionpack (8.0.2) lib/action_controller/metal/rescue.rb:27:in `process_action'
+actionpack (8.0.2) lib/action_controller/metal/instrumentation.rb:76:in `block in process_action'
+activesupport (8.0.2) lib/active_support/notifications.rb:210:in `block in instrument'
+activesupport (8.0.2) lib/active_support/notifications/instrumenter.rb:58:in `instrument'
+activesupport (8.0.2) lib/active_support/notifications.rb:210:in `instrument'
+actionpack (8.0.2) lib/action_controller/metal/instrumentation.rb:75:in `process_action'
+actionpack (8.0.2) lib/action_controller/metal/params_wrapper.rb:259:in `process_action'
+activerecord (8.0.2) lib/active_record/railties/controller_runtime.rb:39:in `process_action'
+actionpack (8.0.2) lib/abstract_controller/base.rb:163:in `process'
+actionview (8.0.2) lib/action_view/rendering.rb:40:in `process'
+actionpack (8.0.2) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (8.0.2) lib/action_controller/metal.rb:335:in `dispatch'
+actionpack (8.0.2) lib/action_dispatch/routing/route_set.rb:67:in `dispatch'
+actionpack (8.0.2) lib/action_dispatch/routing/route_set.rb:50:in `serve'
+actionpack (8.0.2) lib/action_dispatch/journey/router.rb:53:in `block in serve'
+actionpack (8.0.2) lib/action_dispatch/journey/router.rb:133:in `block in find_routes'
+actionpack (8.0.2) lib/action_dispatch/journey/router.rb:126:in `each'
+actionpack (8.0.2) lib/action_dispatch/journey/router.rb:126:in `find_routes'
+actionpack (8.0.2) lib/action_dispatch/journey/router.rb:34:in `serve'
+actionpack (8.0.2) lib/action_dispatch/routing/route_set.rb:908:in `call'
+railties (8.0.2) lib/rails/engine/lazy_route_set.rb:68:in `call'
+rack (3.1.16) lib/rack/tempfile_reaper.rb:20:in `call'
+rack (3.1.16) lib/rack/etag.rb:29:in `call'
+rack (3.1.16) lib/rack/conditional_get.rb:31:in `call'
+rack (3.1.16) lib/rack/head.rb:15:in `call'
+actionpack (8.0.2) lib/action_dispatch/http/permissions_policy.rb:38:in `call'
+actionpack (8.0.2) lib/action_dispatch/http/content_security_policy.rb:38:in `call'
+rack-session (2.1.1) lib/rack/session/abstract/id.rb:274:in `context'
+rack-session (2.1.1) lib/rack/session/abstract/id.rb:268:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/cookies.rb:706:in `call'
+activerecord (8.0.2) lib/active_record/migration.rb:671:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/callbacks.rb:31:in `block in call'
+activesupport (8.0.2) lib/active_support/callbacks.rb:100:in `run_callbacks'
+actionpack (8.0.2) lib/action_dispatch/middleware/callbacks.rb:30:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/executor.rb:16:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:31:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/show_exceptions.rb:32:in `call'
+railties (8.0.2) lib/rails/rack/logger.rb:41:in `call_app'
+railties (8.0.2) lib/rails/rack/logger.rb:29:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/remote_ip.rb:96:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/request_id.rb:34:in `call'
+rack (3.1.16) lib/rack/method_override.rb:28:in `call'
+rack (3.1.16) lib/rack/runtime.rb:24:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (8.0.2) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (8.0.2) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/executor.rb:16:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/static.rb:27:in `call'
+rack (3.1.16) lib/rack/sendfile.rb:114:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/host_authorization.rb:143:in `call'
+railties (8.0.2) lib/rails/engine.rb:535:in `call'
+puma (6.6.0) lib/puma/configuration.rb:279:in `call'
+puma (6.6.0) lib/puma/request.rb:99:in `block in handle_request'
+puma (6.6.0) lib/puma/thread_pool.rb:390:in `with_force_shutdown'
+puma (6.6.0) lib/puma/request.rb:98:in `handle_request'
+puma (6.6.0) lib/puma/server.rb:472:in `process_client'
+puma (6.6.0) lib/puma/server.rb:254:in `block in run'
+puma (6.6.0) lib/puma/thread_pool.rb:167:in `block in spawn_thread'
+Started GET "/api/todos/stats" for ::1 at 2025-07-12 00:35:05 +0900
+Processing by Api::TodosController#stats as */*
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+NoMethodError (undefined method `require_login' for an instance of Api::TodosController):
+  
+railties (8.0.2) lib/rails/engine/lazy_route_set.rb:99:in `method_missing'
+activesupport (8.0.2) lib/active_support/callbacks.rb:361:in `block in make_lambda'
+activesupport (8.0.2) lib/active_support/callbacks.rb:178:in `block in call'
+actionpack (8.0.2) lib/abstract_controller/callbacks.rb:34:in `block (2 levels) in <module:Callbacks>'
+activesupport (8.0.2) lib/active_support/callbacks.rb:179:in `call'
+activesupport (8.0.2) lib/active_support/callbacks.rb:559:in `block in invoke_before'
+activesupport (8.0.2) lib/active_support/callbacks.rb:559:in `each'
+activesupport (8.0.2) lib/active_support/callbacks.rb:559:in `invoke_before'
+activesupport (8.0.2) lib/active_support/callbacks.rb:118:in `block in run_callbacks'
+turbo-rails (2.0.16) lib/turbo-rails.rb:24:in `with_request_id'
+turbo-rails (2.0.16) app/controllers/concerns/turbo/request_id_tracking.rb:10:in `turbo_tracking_request_id'
+activesupport (8.0.2) lib/active_support/callbacks.rb:129:in `block in run_callbacks'
+actiontext (8.0.2) lib/action_text/rendering.rb:25:in `with_renderer'
+actiontext (8.0.2) lib/action_text/engine.rb:71:in `block (4 levels) in <class:Engine>'
+activesupport (8.0.2) lib/active_support/callbacks.rb:129:in `instance_exec'
+activesupport (8.0.2) lib/active_support/callbacks.rb:129:in `block in run_callbacks'
+activesupport (8.0.2) lib/active_support/callbacks.rb:140:in `run_callbacks'
+actionpack (8.0.2) lib/abstract_controller/callbacks.rb:260:in `process_action'
+actionpack (8.0.2) lib/action_controller/metal/rescue.rb:27:in `process_action'
+actionpack (8.0.2) lib/action_controller/metal/instrumentation.rb:76:in `block in process_action'
+activesupport (8.0.2) lib/active_support/notifications.rb:210:in `block in instrument'
+activesupport (8.0.2) lib/active_support/notifications/instrumenter.rb:58:in `instrument'
+activesupport (8.0.2) lib/active_support/notifications.rb:210:in `instrument'
+actionpack (8.0.2) lib/action_controller/metal/instrumentation.rb:75:in `process_action'
+actionpack (8.0.2) lib/action_controller/metal/params_wrapper.rb:259:in `process_action'
+activerecord (8.0.2) lib/active_record/railties/controller_runtime.rb:39:in `process_action'
+actionpack (8.0.2) lib/abstract_controller/base.rb:163:in `process'
+actionview (8.0.2) lib/action_view/rendering.rb:40:in `process'
+actionpack (8.0.2) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (8.0.2) lib/action_controller/metal.rb:335:in `dispatch'
+actionpack (8.0.2) lib/action_dispatch/routing/route_set.rb:67:in `dispatch'
+actionpack (8.0.2) lib/action_dispatch/routing/route_set.rb:50:in `serve'
+actionpack (8.0.2) lib/action_dispatch/journey/router.rb:53:in `block in serve'
+actionpack (8.0.2) lib/action_dispatch/journey/router.rb:133:in `block in find_routes'
+actionpack (8.0.2) lib/action_dispatch/journey/router.rb:126:in `each'
+actionpack (8.0.2) lib/action_dispatch/journey/router.rb:126:in `find_routes'
+actionpack (8.0.2) lib/action_dispatch/journey/router.rb:34:in `serve'
+actionpack (8.0.2) lib/action_dispatch/routing/route_set.rb:908:in `call'
+railties (8.0.2) lib/rails/engine/lazy_route_set.rb:68:in `call'
+rack (3.1.16) lib/rack/tempfile_reaper.rb:20:in `call'
+rack (3.1.16) lib/rack/etag.rb:29:in `call'
+rack (3.1.16) lib/rack/conditional_get.rb:31:in `call'
+rack (3.1.16) lib/rack/head.rb:15:in `call'
+actionpack (8.0.2) lib/action_dispatch/http/permissions_policy.rb:38:in `call'
+actionpack (8.0.2) lib/action_dispatch/http/content_security_policy.rb:38:in `call'
+rack-session (2.1.1) lib/rack/session/abstract/id.rb:274:in `context'
+rack-session (2.1.1) lib/rack/session/abstract/id.rb:268:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/cookies.rb:706:in `call'
+activerecord (8.0.2) lib/active_record/migration.rb:671:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/callbacks.rb:31:in `block in call'
+activesupport (8.0.2) lib/active_support/callbacks.rb:100:in `run_callbacks'
+actionpack (8.0.2) lib/action_dispatch/middleware/callbacks.rb:30:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/executor.rb:16:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:31:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/show_exceptions.rb:32:in `call'
+railties (8.0.2) lib/rails/rack/logger.rb:41:in `call_app'
+railties (8.0.2) lib/rails/rack/logger.rb:29:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/remote_ip.rb:96:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/request_id.rb:34:in `call'
+rack (3.1.16) lib/rack/method_override.rb:28:in `call'
+rack (3.1.16) lib/rack/runtime.rb:24:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (8.0.2) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (8.0.2) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/executor.rb:16:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/static.rb:27:in `call'
+rack (3.1.16) lib/rack/sendfile.rb:114:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/host_authorization.rb:143:in `call'
+railties (8.0.2) lib/rails/engine.rb:535:in `call'
+puma (6.6.0) lib/puma/configuration.rb:279:in `call'
+puma (6.6.0) lib/puma/request.rb:99:in `block in handle_request'
+puma (6.6.0) lib/puma/thread_pool.rb:390:in `with_force_shutdown'
+puma (6.6.0) lib/puma/request.rb:98:in `handle_request'
+puma (6.6.0) lib/puma/server.rb:472:in `process_client'
+puma (6.6.0) lib/puma/server.rb:254:in `block in run'
+puma (6.6.0) lib/puma/thread_pool.rb:167:in `block in spawn_thread'
+Started GET "/api/todos/stats" for ::1 at 2025-07-12 00:35:10 +0900
+Processing by Api::TodosController#stats as */*
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+NoMethodError (undefined method `require_login' for an instance of Api::TodosController):
+  
+railties (8.0.2) lib/rails/engine/lazy_route_set.rb:99:in `method_missing'
+activesupport (8.0.2) lib/active_support/callbacks.rb:361:in `block in make_lambda'
+activesupport (8.0.2) lib/active_support/callbacks.rb:178:in `block in call'
+actionpack (8.0.2) lib/abstract_controller/callbacks.rb:34:in `block (2 levels) in <module:Callbacks>'
+activesupport (8.0.2) lib/active_support/callbacks.rb:179:in `call'
+activesupport (8.0.2) lib/active_support/callbacks.rb:559:in `block in invoke_before'
+activesupport (8.0.2) lib/active_support/callbacks.rb:559:in `each'
+activesupport (8.0.2) lib/active_support/callbacks.rb:559:in `invoke_before'
+activesupport (8.0.2) lib/active_support/callbacks.rb:118:in `block in run_callbacks'
+turbo-rails (2.0.16) lib/turbo-rails.rb:24:in `with_request_id'
+turbo-rails (2.0.16) app/controllers/concerns/turbo/request_id_tracking.rb:10:in `turbo_tracking_request_id'
+activesupport (8.0.2) lib/active_support/callbacks.rb:129:in `block in run_callbacks'
+actiontext (8.0.2) lib/action_text/rendering.rb:25:in `with_renderer'
+actiontext (8.0.2) lib/action_text/engine.rb:71:in `block (4 levels) in <class:Engine>'
+activesupport (8.0.2) lib/active_support/callbacks.rb:129:in `instance_exec'
+activesupport (8.0.2) lib/active_support/callbacks.rb:129:in `block in run_callbacks'
+activesupport (8.0.2) lib/active_support/callbacks.rb:140:in `run_callbacks'
+actionpack (8.0.2) lib/abstract_controller/callbacks.rb:260:in `process_action'
+actionpack (8.0.2) lib/action_controller/metal/rescue.rb:27:in `process_action'
+actionpack (8.0.2) lib/action_controller/metal/instrumentation.rb:76:in `block in process_action'
+activesupport (8.0.2) lib/active_support/notifications.rb:210:in `block in instrument'
+activesupport (8.0.2) lib/active_support/notifications/instrumenter.rb:58:in `instrument'
+activesupport (8.0.2) lib/active_support/notifications.rb:210:in `instrument'
+actionpack (8.0.2) lib/action_controller/metal/instrumentation.rb:75:in `process_action'
+actionpack (8.0.2) lib/action_controller/metal/params_wrapper.rb:259:in `process_action'
+activerecord (8.0.2) lib/active_record/railties/controller_runtime.rb:39:in `process_action'
+actionpack (8.0.2) lib/abstract_controller/base.rb:163:in `process'
+actionview (8.0.2) lib/action_view/rendering.rb:40:in `process'
+actionpack (8.0.2) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (8.0.2) lib/action_controller/metal.rb:335:in `dispatch'
+actionpack (8.0.2) lib/action_dispatch/routing/route_set.rb:67:in `dispatch'
+actionpack (8.0.2) lib/action_dispatch/routing/route_set.rb:50:in `serve'
+actionpack (8.0.2) lib/action_dispatch/journey/router.rb:53:in `block in serve'
+actionpack (8.0.2) lib/action_dispatch/journey/router.rb:133:in `block in find_routes'
+actionpack (8.0.2) lib/action_dispatch/journey/router.rb:126:in `each'
+actionpack (8.0.2) lib/action_dispatch/journey/router.rb:126:in `find_routes'
+actionpack (8.0.2) lib/action_dispatch/journey/router.rb:34:in `serve'
+actionpack (8.0.2) lib/action_dispatch/routing/route_set.rb:908:in `call'
+railties (8.0.2) lib/rails/engine/lazy_route_set.rb:68:in `call'
+rack (3.1.16) lib/rack/tempfile_reaper.rb:20:in `call'
+rack (3.1.16) lib/rack/etag.rb:29:in `call'
+rack (3.1.16) lib/rack/conditional_get.rb:31:in `call'
+rack (3.1.16) lib/rack/head.rb:15:in `call'
+actionpack (8.0.2) lib/action_dispatch/http/permissions_policy.rb:38:in `call'
+actionpack (8.0.2) lib/action_dispatch/http/content_security_policy.rb:38:in `call'
+rack-session (2.1.1) lib/rack/session/abstract/id.rb:274:in `context'
+rack-session (2.1.1) lib/rack/session/abstract/id.rb:268:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/cookies.rb:706:in `call'
+activerecord (8.0.2) lib/active_record/migration.rb:671:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/callbacks.rb:31:in `block in call'
+activesupport (8.0.2) lib/active_support/callbacks.rb:100:in `run_callbacks'
+actionpack (8.0.2) lib/action_dispatch/middleware/callbacks.rb:30:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/executor.rb:16:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:31:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/show_exceptions.rb:32:in `call'
+railties (8.0.2) lib/rails/rack/logger.rb:41:in `call_app'
+railties (8.0.2) lib/rails/rack/logger.rb:29:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/remote_ip.rb:96:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/request_id.rb:34:in `call'
+rack (3.1.16) lib/rack/method_override.rb:28:in `call'
+rack (3.1.16) lib/rack/runtime.rb:24:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (8.0.2) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (8.0.2) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/executor.rb:16:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/static.rb:27:in `call'
+rack (3.1.16) lib/rack/sendfile.rb:114:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/host_authorization.rb:143:in `call'
+railties (8.0.2) lib/rails/engine.rb:535:in `call'
+puma (6.6.0) lib/puma/configuration.rb:279:in `call'
+puma (6.6.0) lib/puma/request.rb:99:in `block in handle_request'
+puma (6.6.0) lib/puma/thread_pool.rb:390:in `with_force_shutdown'
+puma (6.6.0) lib/puma/request.rb:98:in `handle_request'
+puma (6.6.0) lib/puma/server.rb:472:in `process_client'
+puma (6.6.0) lib/puma/server.rb:254:in `block in run'
+puma (6.6.0) lib/puma/thread_pool.rb:167:in `block in spawn_thread'
+Started GET "/update_time" for ::1 at 2025-07-12 00:35:12 +0900
+Processing by HomeController#update_time as HTML
+Completed 500 Internal Server Error in 26ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+NoMethodError (undefined method `require_login' for an instance of HomeController):
+  
+railties (8.0.2) lib/rails/engine/lazy_route_set.rb:99:in `method_missing'
+activesupport (8.0.2) lib/active_support/callbacks.rb:361:in `block in make_lambda'
+activesupport (8.0.2) lib/active_support/callbacks.rb:178:in `block in call'
+actionpack (8.0.2) lib/abstract_controller/callbacks.rb:34:in `block (2 levels) in <module:Callbacks>'
+activesupport (8.0.2) lib/active_support/callbacks.rb:179:in `call'
+activesupport (8.0.2) lib/active_support/callbacks.rb:559:in `block in invoke_before'
+activesupport (8.0.2) lib/active_support/callbacks.rb:559:in `each'
+activesupport (8.0.2) lib/active_support/callbacks.rb:559:in `invoke_before'
+activesupport (8.0.2) lib/active_support/callbacks.rb:118:in `block in run_callbacks'
+turbo-rails (2.0.16) lib/turbo-rails.rb:24:in `with_request_id'
+turbo-rails (2.0.16) app/controllers/concerns/turbo/request_id_tracking.rb:10:in `turbo_tracking_request_id'
+activesupport (8.0.2) lib/active_support/callbacks.rb:129:in `block in run_callbacks'
+actiontext (8.0.2) lib/action_text/rendering.rb:25:in `with_renderer'
+actiontext (8.0.2) lib/action_text/engine.rb:71:in `block (4 levels) in <class:Engine>'
+activesupport (8.0.2) lib/active_support/callbacks.rb:129:in `instance_exec'
+activesupport (8.0.2) lib/active_support/callbacks.rb:129:in `block in run_callbacks'
+activesupport (8.0.2) lib/active_support/callbacks.rb:140:in `run_callbacks'
+actionpack (8.0.2) lib/abstract_controller/callbacks.rb:260:in `process_action'
+actionpack (8.0.2) lib/action_controller/metal/rescue.rb:27:in `process_action'
+actionpack (8.0.2) lib/action_controller/metal/instrumentation.rb:76:in `block in process_action'
+activesupport (8.0.2) lib/active_support/notifications.rb:210:in `block in instrument'
+activesupport (8.0.2) lib/active_support/notifications/instrumenter.rb:58:in `instrument'
+activesupport (8.0.2) lib/active_support/notifications.rb:210:in `instrument'
+actionpack (8.0.2) lib/action_controller/metal/instrumentation.rb:75:in `process_action'
+actionpack (8.0.2) lib/action_controller/metal/params_wrapper.rb:259:in `process_action'
+activerecord (8.0.2) lib/active_record/railties/controller_runtime.rb:39:in `process_action'
+actionpack (8.0.2) lib/abstract_controller/base.rb:163:in `process'
+actionview (8.0.2) lib/action_view/rendering.rb:40:in `process'
+actionpack (8.0.2) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (8.0.2) lib/action_controller/metal.rb:335:in `dispatch'
+actionpack (8.0.2) lib/action_dispatch/routing/route_set.rb:67:in `dispatch'
+actionpack (8.0.2) lib/action_dispatch/routing/route_set.rb:50:in `serve'
+actionpack (8.0.2) lib/action_dispatch/journey/router.rb:53:in `block in serve'
+actionpack (8.0.2) lib/action_dispatch/journey/router.rb:133:in `block in find_routes'
+actionpack (8.0.2) lib/action_dispatch/journey/router.rb:126:in `each'
+actionpack (8.0.2) lib/action_dispatch/journey/router.rb:126:in `find_routes'
+actionpack (8.0.2) lib/action_dispatch/journey/router.rb:34:in `serve'
+actionpack (8.0.2) lib/action_dispatch/routing/route_set.rb:908:in `call'
+railties (8.0.2) lib/rails/engine/lazy_route_set.rb:68:in `call'
+rack (3.1.16) lib/rack/tempfile_reaper.rb:20:in `call'
+rack (3.1.16) lib/rack/etag.rb:29:in `call'
+rack (3.1.16) lib/rack/conditional_get.rb:31:in `call'
+rack (3.1.16) lib/rack/head.rb:15:in `call'
+actionpack (8.0.2) lib/action_dispatch/http/permissions_policy.rb:38:in `call'
+actionpack (8.0.2) lib/action_dispatch/http/content_security_policy.rb:38:in `call'
+rack-session (2.1.1) lib/rack/session/abstract/id.rb:274:in `context'
+rack-session (2.1.1) lib/rack/session/abstract/id.rb:268:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/cookies.rb:706:in `call'
+activerecord (8.0.2) lib/active_record/migration.rb:671:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/callbacks.rb:31:in `block in call'
+activesupport (8.0.2) lib/active_support/callbacks.rb:100:in `run_callbacks'
+actionpack (8.0.2) lib/action_dispatch/middleware/callbacks.rb:30:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/executor.rb:16:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:31:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/show_exceptions.rb:32:in `call'
+railties (8.0.2) lib/rails/rack/logger.rb:41:in `call_app'
+railties (8.0.2) lib/rails/rack/logger.rb:29:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/remote_ip.rb:96:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/request_id.rb:34:in `call'
+rack (3.1.16) lib/rack/method_override.rb:28:in `call'
+rack (3.1.16) lib/rack/runtime.rb:24:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (8.0.2) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (8.0.2) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/executor.rb:16:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/static.rb:27:in `call'
+rack (3.1.16) lib/rack/sendfile.rb:114:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/host_authorization.rb:143:in `call'
+railties (8.0.2) lib/rails/engine.rb:535:in `call'
+puma (6.6.0) lib/puma/configuration.rb:279:in `call'
+puma (6.6.0) lib/puma/request.rb:99:in `block in handle_request'
+puma (6.6.0) lib/puma/thread_pool.rb:390:in `with_force_shutdown'
+puma (6.6.0) lib/puma/request.rb:98:in `handle_request'
+puma (6.6.0) lib/puma/server.rb:472:in `process_client'
+puma (6.6.0) lib/puma/server.rb:254:in `block in run'
+puma (6.6.0) lib/puma/thread_pool.rb:167:in `block in spawn_thread'
+Started GET "/" for ::1 at 2025-07-12 00:35:15 +0900
+Started GET "/favicon.ico" for ::1 at 2025-07-12 00:35:15 +0900
+Processing by HomeController#index as HTML
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Completed 500 Internal Server Error in 74ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 6.4ms)
+
+
+  
+NoMethodError (undefined method `require_login' for an instance of HomeController):
+  
+railties (8.0.2) lib/rails/engine/lazy_route_set.rb:99:in `method_missing'
+activesupport (8.0.2) lib/active_support/callbacks.rb:361:in `block in make_lambda'
+activesupport (8.0.2) lib/active_support/callbacks.rb:178:in `block in call'
+actionpack (8.0.2) lib/abstract_controller/callbacks.rb:34:in `block (2 levels) in <module:Callbacks>'
+activesupport (8.0.2) lib/active_support/callbacks.rb:179:in `call'
+activesupport (8.0.2) lib/active_support/callbacks.rb:559:in `block in invoke_before'
+activesupport (8.0.2) lib/active_support/callbacks.rb:559:in `each'
+activesupport (8.0.2) lib/active_support/callbacks.rb:559:in `invoke_before'
+activesupport (8.0.2) lib/active_support/callbacks.rb:118:in `block in run_callbacks'
+turbo-rails (2.0.16) lib/turbo-rails.rb:24:in `with_request_id'
+turbo-rails (2.0.16) app/controllers/concerns/turbo/request_id_tracking.rb:10:in `turbo_tracking_request_id'
+activesupport (8.0.2) lib/active_support/callbacks.rb:129:in `block in run_callbacks'
+actiontext (8.0.2) lib/action_text/rendering.rb:25:in `with_renderer'
+actiontext (8.0.2) lib/action_text/engine.rb:71:in `block (4 levels) in <class:Engine>'
+activesupport (8.0.2) lib/active_support/callbacks.rb:129:in `instance_exec'
+activesupport (8.0.2) lib/active_support/callbacks.rb:129:in `block in run_callbacks'
+activesupport (8.0.2) lib/active_support/callbacks.rb:140:in `run_callbacks'
+actionpack (8.0.2) lib/abstract_controller/callbacks.rb:260:in `process_action'
+actionpack (8.0.2) lib/action_controller/metal/rescue.rb:27:in `process_action'
+actionpack (8.0.2) lib/action_controller/metal/instrumentation.rb:76:in `block in process_action'
+activesupport (8.0.2) lib/active_support/notifications.rb:210:in `block in instrument'
+activesupport (8.0.2) lib/active_support/notifications/instrumenter.rb:58:in `instrument'
+activesupport (8.0.2) lib/active_support/notifications.rb:210:in `instrument'
+actionpack (8.0.2) lib/action_controller/metal/instrumentation.rb:75:in `process_action'
+actionpack (8.0.2) lib/action_controller/metal/params_wrapper.rb:259:in `process_action'
+activerecord (8.0.2) lib/active_record/railties/controller_runtime.rb:39:in `process_action'
+actionpack (8.0.2) lib/abstract_controller/base.rb:163:in `process'
+actionview (8.0.2) lib/action_view/rendering.rb:40:in `process'
+actionpack (8.0.2) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (8.0.2) lib/action_controller/metal.rb:335:in `dispatch'
+actionpack (8.0.2) lib/action_dispatch/routing/route_set.rb:67:in `dispatch'
+actionpack (8.0.2) lib/action_dispatch/routing/route_set.rb:50:in `serve'
+actionpack (8.0.2) lib/action_dispatch/journey/router.rb:53:in `block in serve'
+actionpack (8.0.2) lib/action_dispatch/journey/router.rb:133:in `block in find_routes'
+actionpack (8.0.2) lib/action_dispatch/journey/router.rb:126:in `each'
+actionpack (8.0.2) lib/action_dispatch/journey/router.rb:126:in `find_routes'
+actionpack (8.0.2) lib/action_dispatch/journey/router.rb:34:in `serve'
+actionpack (8.0.2) lib/action_dispatch/routing/route_set.rb:908:in `call'
+railties (8.0.2) lib/rails/engine/lazy_route_set.rb:68:in `call'
+rack (3.1.16) lib/rack/tempfile_reaper.rb:20:in `call'
+rack (3.1.16) lib/rack/etag.rb:29:in `call'
+rack (3.1.16) lib/rack/conditional_get.rb:31:in `call'
+rack (3.1.16) lib/rack/head.rb:15:in `call'
+actionpack (8.0.2) lib/action_dispatch/http/permissions_policy.rb:38:in `call'
+actionpack (8.0.2) lib/action_dispatch/http/content_security_policy.rb:38:in `call'
+rack-session (2.1.1) lib/rack/session/abstract/id.rb:274:in `context'
+rack-session (2.1.1) lib/rack/session/abstract/id.rb:268:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/cookies.rb:706:in `call'
+activerecord (8.0.2) lib/active_record/migration.rb:671:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/callbacks.rb:31:in `block in call'
+activesupport (8.0.2) lib/active_support/callbacks.rb:100:in `run_callbacks'
+actionpack (8.0.2) lib/action_dispatch/middleware/callbacks.rb:30:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/executor.rb:16:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:31:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/show_exceptions.rb:32:in `call'
+railties (8.0.2) lib/rails/rack/logger.rb:41:in `call_app'
+railties (8.0.2) lib/rails/rack/logger.rb:29:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/remote_ip.rb:96:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/request_id.rb:34:in `call'
+rack (3.1.16) lib/rack/method_override.rb:28:in `call'
+rack (3.1.16) lib/rack/runtime.rb:24:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (8.0.2) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (8.0.2) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/executor.rb:16:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/static.rb:27:in `call'
+rack (3.1.16) lib/rack/sendfile.rb:114:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/host_authorization.rb:143:in `call'
+railties (8.0.2) lib/rails/engine.rb:535:in `call'
+puma (6.6.0) lib/puma/configuration.rb:279:in `call'
+puma (6.6.0) lib/puma/request.rb:99:in `block in handle_request'
+puma (6.6.0) lib/puma/thread_pool.rb:390:in `with_force_shutdown'
+puma (6.6.0) lib/puma/request.rb:98:in `handle_request'
+puma (6.6.0) lib/puma/server.rb:472:in `process_client'
+puma (6.6.0) lib/puma/server.rb:254:in `block in run'
+puma (6.6.0) lib/puma/thread_pool.rb:167:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2025-07-12 00:37:48 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='HelloWorldApp'*/[0m
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 2.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.7ms | GC: 0.0ms)
+Completed 500 Internal Server Error in 53ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <div class="container" style="max-width: 800px; margin: 0 auto; padding: 20px; font-family: Arial, sans-serif;">
+  <!-- 네비게이션 -->
+  <div style="background: #f8f9fa; padding: 15px; border-radius: 10px; margin-bottom: 30px; display: flex; justify-content: space-between; align-items: center;">
+    <div>
+      <h2 style="margin: 0; color: #2c3e50;">Mini Ruby App</h2>
+    </div>
+    <div>
+      <% if current_user %>
+        <span style="color: #495057; margin-right: 15px;">안녕하세요, <%= current_user.full_name %>님!</span>
+        <%= link_to "프로필", profile_path, style: "color: #007bff; text-decoration: none; margin-right: 15px;" %>
+        <%= link_to "로그아웃", logout_path, method: :delete, style: "color: #dc3545; text-decoration: none;" %>
+      <% else %>
+        <%= link_to "로그인", login_path, style: "color: #007bff; text-decoration: none; margin-right: 15px;" %>
+        <%= link_to "회원가입", signup_path, style: "color: #28a745; text-decoration: none;" %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="header" style="text-align: center; margin-bottom: 30px;">
+    <h1 style="color: #2c3e50; margin-bottom: 10px;">Hello World!</h1>
+    <p style="color: #7f8c8d; font-size: 18px;">루비온 레일즈로 만든 첫 번째 웹 애플리케이션입니다.</p>
+    <% if current_user %>
+      <p style="color: #28a745; font-weight: bold;">로그인된 사용자만 할일을 관리할 수 있습니다.</p>
+    <% else %>
+      <p style="color: #ffc107; font-weight: bold;">로그인하시면 개인 할일을 관리할 수 있습니다.</p>
+    <% end %>
+  </div>
+
+  <!-- Stimulus 컨트롤러를 사용한 카운터 -->
+  <div data-controller="counter" class="counter-section" style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin-bottom: 30px;">
+    <h3 style="color: #495057; margin-bottom: 15px;">인터랙티브 카운터</h3>
+    <div style="text-align: center;">
+      <p style="font-size: 24px; margin-bottom: 20px;">
+        현재 카운트: <span data-counter-target="count" style="font-weight: bold; color: #007bff;">0</span>
+      </p>
+      <button data-action="click->counter#increment" style="background: #28a745; color: white; border: none; padding: 10px 20px; margin: 5px; border-radius: 5px; cursor: pointer;">+1</button>
+      <button data-action="click->counter#decrement" style="background: #dc3545; color: white; border: none; padding: 10px 20px; margin: 5px; border-radius: 5px; cursor: pointer;">-1</button>
+      <button data-action="click->counter#reset" style="background: #6c757d; color: white; border: none; padding: 10px 20px; margin: 5px; border-radius: 5px; cursor: pointer;">리셋</button>
+    </div>
+  </div>
+
+  <!-- Turbo Frame을 사용한 동적 콘텐츠 -->
+  <div class="turbo-section" style="background: #e9ecef; padding: 20px; border-radius: 10px; margin-bottom: 30px;">
+    <h3 style="color: #495057; margin-bottom: 15px;">동적 콘텐츠 (Turbo Frame)</h3>
+    <%= turbo_frame_tag "dynamic_content" do %>
+      <div id="time-display" style="text-align: center; padding: 20px; background: white; border-radius: 5px;">
+        <p style="font-size: 18px; color: #6c757d;">현재 시간: <%= Time.current.strftime("%Y-%m-%d %H:%M:%S") %></p>
+        <%= link_to "시간 업데이트", update_time_path, 
+            style: "background: #007bff; color: white; text-decoration: none; padding: 10px 20px; border-radius: 5px; display: inline-block;" %>
+      </div>
+    <% end %>
+  </div>
+
+  <% if current_user %>
+    <!-- 통계 정보 섹션 -->
+    <div data-controller="stats" class="stats-section" style="background: #d1ecf1; padding: 20px; border-radius: 10px; margin-bottom: 30px;">
+      <h3 style="color: #0c5460; margin-bottom: 15px;">할일 통계</h3>
+      <div data-stats-target="display" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 15px; text-align: center;">
+        <!-- 통계 정보가 여기에 동적으로 표시됩니다 -->
+      </div>
+    </div>
+
+    <!-- Stimulus를 사용한 할일 목록 -->
+    <div data-controller="todo" class="todo-section" style="background: #fff3cd; padding: 20px; border-radius: 10px;">
+      <h3 style="color: #856404; margin-bottom: 15px;">할일 목록</h3>
+    <div style="margin-bottom: 20px;">
+      <input data-todo-target="input" type="text" placeholder="새로운 할일을 입력하세요" 
+             data-action="keydown->todo#handleKeydown"
+             style="padding: 10px; border: 1px solid #ddd; border-radius: 5px; width: 70%; margin-right: 10px;">
+      <button data-action="click->todo#add" 
+              style="background: #ffc107; color: #212529; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">추가</button>
+    </div>
+    <ul data-todo-target="list" style="list-style: none; padding: 0;">
+      <!-- 할일 목록이 여기에 동적으로 추가됩니다 -->
+    </ul>
+  </div>
+</div>
+
+)
+Caused by: ActiveSupport::SyntaxErrorProxy (/Users/seungbeenwi/Project/mini-ruby/app/views/home/index.html.erb:80: syntax error, unexpected end-of-input, expecting `end' or dummy end
+          end
+             ^
+)
+
+Information for: ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <div class="container" style="max-width: 800px; margin: 0 auto; padding: 20px; font-family: Arial, sans-serif;">
+  <!-- 네비게이션 -->
+  <div style="background: #f8f9fa; padding: 15px; border-radius: 10px; margin-bottom: 30px; display: flex; justify-content: space-between; align-items: center;">
+    <div>
+      <h2 style="margin: 0; color: #2c3e50;">Mini Ruby App</h2>
+    </div>
+    <div>
+      <% if current_user %>
+        <span style="color: #495057; margin-right: 15px;">안녕하세요, <%= current_user.full_name %>님!</span>
+        <%= link_to "프로필", profile_path, style: "color: #007bff; text-decoration: none; margin-right: 15px;" %>
+        <%= link_to "로그아웃", logout_path, method: :delete, style: "color: #dc3545; text-decoration: none;" %>
+      <% else %>
+        <%= link_to "로그인", login_path, style: "color: #007bff; text-decoration: none; margin-right: 15px;" %>
+        <%= link_to "회원가입", signup_path, style: "color: #28a745; text-decoration: none;" %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="header" style="text-align: center; margin-bottom: 30px;">
+    <h1 style="color: #2c3e50; margin-bottom: 10px;">Hello World!</h1>
+    <p style="color: #7f8c8d; font-size: 18px;">루비온 레일즈로 만든 첫 번째 웹 애플리케이션입니다.</p>
+    <% if current_user %>
+      <p style="color: #28a745; font-weight: bold;">로그인된 사용자만 할일을 관리할 수 있습니다.</p>
+    <% else %>
+      <p style="color: #ffc107; font-weight: bold;">로그인하시면 개인 할일을 관리할 수 있습니다.</p>
+    <% end %>
+  </div>
+
+  <!-- Stimulus 컨트롤러를 사용한 카운터 -->
+  <div data-controller="counter" class="counter-section" style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin-bottom: 30px;">
+    <h3 style="color: #495057; margin-bottom: 15px;">인터랙티브 카운터</h3>
+    <div style="text-align: center;">
+      <p style="font-size: 24px; margin-bottom: 20px;">
+        현재 카운트: <span data-counter-target="count" style="font-weight: bold; color: #007bff;">0</span>
+      </p>
+      <button data-action="click->counter#increment" style="background: #28a745; color: white; border: none; padding: 10px 20px; margin: 5px; border-radius: 5px; cursor: pointer;">+1</button>
+      <button data-action="click->counter#decrement" style="background: #dc3545; color: white; border: none; padding: 10px 20px; margin: 5px; border-radius: 5px; cursor: pointer;">-1</button>
+      <button data-action="click->counter#reset" style="background: #6c757d; color: white; border: none; padding: 10px 20px; margin: 5px; border-radius: 5px; cursor: pointer;">리셋</button>
+    </div>
+  </div>
+
+  <!-- Turbo Frame을 사용한 동적 콘텐츠 -->
+  <div class="turbo-section" style="background: #e9ecef; padding: 20px; border-radius: 10px; margin-bottom: 30px;">
+    <h3 style="color: #495057; margin-bottom: 15px;">동적 콘텐츠 (Turbo Frame)</h3>
+    <%= turbo_frame_tag "dynamic_content" do %>
+      <div id="time-display" style="text-align: center; padding: 20px; background: white; border-radius: 5px;">
+        <p style="font-size: 18px; color: #6c757d;">현재 시간: <%= Time.current.strftime("%Y-%m-%d %H:%M:%S") %></p>
+        <%= link_to "시간 업데이트", update_time_path, 
+            style: "background: #007bff; color: white; text-decoration: none; padding: 10px 20px; border-radius: 5px; display: inline-block;" %>
+      </div>
+    <% end %>
+  </div>
+
+  <% if current_user %>
+    <!-- 통계 정보 섹션 -->
+    <div data-controller="stats" class="stats-section" style="background: #d1ecf1; padding: 20px; border-radius: 10px; margin-bottom: 30px;">
+      <h3 style="color: #0c5460; margin-bottom: 15px;">할일 통계</h3>
+      <div data-stats-target="display" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 15px; text-align: center;">
+        <!-- 통계 정보가 여기에 동적으로 표시됩니다 -->
+      </div>
+    </div>
+
+    <!-- Stimulus를 사용한 할일 목록 -->
+    <div data-controller="todo" class="todo-section" style="background: #fff3cd; padding: 20px; border-radius: 10px;">
+      <h3 style="color: #856404; margin-bottom: 15px;">할일 목록</h3>
+    <div style="margin-bottom: 20px;">
+      <input data-todo-target="input" type="text" placeholder="새로운 할일을 입력하세요" 
+             data-action="keydown->todo#handleKeydown"
+             style="padding: 10px; border: 1px solid #ddd; border-radius: 5px; width: 70%; margin-right: 10px;">
+      <button data-action="click->todo#add" 
+              style="background: #ffc107; color: #212529; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">추가</button>
+    </div>
+    <ul data-todo-target="list" style="list-style: none; padding: 0;">
+      <!-- 할일 목록이 여기에 동적으로 추가됩니다 -->
+    </ul>
+  </div>
+</div>
+
+):
+1:    <div class="container" style="max-width: 800px; margin: 0 auto; padding: 20px; font-family: Arial, sans-serif;">
+2:      <!-- 네비게이션 -->
+3:      <div style="background: #f8f9fa; padding: 15px; border-radius: 10px; margin-bottom: 30px; display: flex; justify-content: space-between; align-items: center;">
+4:        <div>
+5:          <h2 style="margin: 0; color: #2c3e50;">Mini Ruby App</h2>
+6:        </div>
+7:        <div>
+8:          <% if current_user %>
+9:            <span style="color: #495057; margin-right: 15px;">안녕하세요, <%= current_user.full_name %>님!</span>
+10:            <%= link_to "프로필", profile_path, style: "color: #007bff; text-decoration: none; margin-right: 15px;" %>
+11:            <%= link_to "로그아웃", logout_path, method: :delete, style: "color: #dc3545; text-decoration: none;" %>
+12:          <% else %>
+13:            <%= link_to "로그인", login_path, style: "color: #007bff; text-decoration: none; margin-right: 15px;" %>
+14:            <%= link_to "회원가입", signup_path, style: "color: #28a745; text-decoration: none;" %>
+15:          <% end %>
+16:        </div>
+17:      </div>
+18:    
+19:      <div class="header" style="text-align: center; margin-bottom: 30px;">
+20:        <h1 style="color: #2c3e50; margin-bottom: 10px;">Hello World!</h1>
+21:        <p style="color: #7f8c8d; font-size: 18px;">루비온 레일즈로 만든 첫 번째 웹 애플리케이션입니다.</p>
+22:        <% if current_user %>
+23:          <p style="color: #28a745; font-weight: bold;">로그인된 사용자만 할일을 관리할 수 있습니다.</p>
+24:        <% else %>
+25:          <p style="color: #ffc107; font-weight: bold;">로그인하시면 개인 할일을 관리할 수 있습니다.</p>
+26:        <% end %>
+27:      </div>
+28:    
+29:      <!-- Stimulus 컨트롤러를 사용한 카운터 -->
+30:      <div data-controller="counter" class="counter-section" style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin-bottom: 30px;">
+31:        <h3 style="color: #495057; margin-bottom: 15px;">인터랙티브 카운터</h3>
+32:        <div style="text-align: center;">
+33:          <p style="font-size: 24px; margin-bottom: 20px;">
+34:            현재 카운트: <span data-counter-target="count" style="font-weight: bold; color: #007bff;">0</span>
+35:          </p>
+36:          <button data-action="click->counter#increment" style="background: #28a745; color: white; border: none; padding: 10px 20px; margin: 5px; border-radius: 5px; cursor: pointer;">+1</button>
+37:          <button data-action="click->counter#decrement" style="background: #dc3545; color: white; border: none; padding: 10px 20px; margin: 5px; border-radius: 5px; cursor: pointer;">-1</button>
+38:          <button data-action="click->counter#reset" style="background: #6c757d; color: white; border: none; padding: 10px 20px; margin: 5px; border-radius: 5px; cursor: pointer;">리셋</button>
+39:        </div>
+40:      </div>
+41:    
+42:      <!-- Turbo Frame을 사용한 동적 콘텐츠 -->
+43:      <div class="turbo-section" style="background: #e9ecef; padding: 20px; border-radius: 10px; margin-bottom: 30px;">
+44:        <h3 style="color: #495057; margin-bottom: 15px;">동적 콘텐츠 (Turbo Frame)</h3>
+45:        <%= turbo_frame_tag "dynamic_content" do %>
+46:          <div id="time-display" style="text-align: center; padding: 20px; background: white; border-radius: 5px;">
+47:            <p style="font-size: 18px; color: #6c757d;">현재 시간: <%= Time.current.strftime("%Y-%m-%d %H:%M:%S") %></p>
+48:            <%= link_to "시간 업데이트", update_time_path, 
+49:                style: "background: #007bff; color: white; text-decoration: none; padding: 10px 20px; border-radius: 5px; display: inline-block;" %>
+50:          </div>
+51:        <% end %>
+52:      </div>
+53:    
+54:      <% if current_user %>
+55:        <!-- 통계 정보 섹션 -->
+56:        <div data-controller="stats" class="stats-section" style="background: #d1ecf1; padding: 20px; border-radius: 10px; margin-bottom: 30px;">
+57:          <h3 style="color: #0c5460; margin-bottom: 15px;">할일 통계</h3>
+58:          <div data-stats-target="display" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 15px; text-align: center;">
+59:            <!-- 통계 정보가 여기에 동적으로 표시됩니다 -->
+60:          </div>
+61:        </div>
+62:    
+63:        <!-- Stimulus를 사용한 할일 목록 -->
+64:        <div data-controller="todo" class="todo-section" style="background: #fff3cd; padding: 20px; border-radius: 10px;">
+65:          <h3 style="color: #856404; margin-bottom: 15px;">할일 목록</h3>
+66:        <div style="margin-bottom: 20px;">
+67:          <input data-todo-target="input" type="text" placeholder="새로운 할일을 입력하세요" 
+68:                 data-action="keydown->todo#handleKeydown"
+69:                 style="padding: 10px; border: 1px solid #ddd; border-radius: 5px; width: 70%; margin-right: 10px;">
+70:          <button data-action="click->todo#add" 
+71:                  style="background: #ffc107; color: #212529; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">추가</button>
+72:        </div>
+73:        <ul data-todo-target="list" style="list-style: none; padding: 0;">
+74:          <!-- 할일 목록이 여기에 동적으로 추가됩니다 -->
+75:        </ul>
+76:      </div>
+77:    </div>
+  
+app/views/home/index.html.erb:80: syntax error, unexpected end-of-input, expecting `end' or dummy end
+
+Information for cause: ActiveSupport::SyntaxErrorProxy (/Users/seungbeenwi/Project/mini-ruby/app/views/home/index.html.erb:80: syntax error, unexpected end-of-input, expecting `end' or dummy end
+          end
+             ^
+):
+  
+app/views/home/index.html.erb:80: syntax error, unexpected end-of-input, expecting `end' or dummy end
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-07-12 00:37:49 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/" for 127.0.0.1 at 2025-07-12 00:37:50 +0900
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 2.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.0ms | GC: 0.0ms)
+Completed 500 Internal Server Error in 30ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <div class="container" style="max-width: 800px; margin: 0 auto; padding: 20px; font-family: Arial, sans-serif;">
+  <!-- 네비게이션 -->
+  <div style="background: #f8f9fa; padding: 15px; border-radius: 10px; margin-bottom: 30px; display: flex; justify-content: space-between; align-items: center;">
+    <div>
+      <h2 style="margin: 0; color: #2c3e50;">Mini Ruby App</h2>
+    </div>
+    <div>
+      <% if current_user %>
+        <span style="color: #495057; margin-right: 15px;">안녕하세요, <%= current_user.full_name %>님!</span>
+        <%= link_to "프로필", profile_path, style: "color: #007bff; text-decoration: none; margin-right: 15px;" %>
+        <%= link_to "로그아웃", logout_path, method: :delete, style: "color: #dc3545; text-decoration: none;" %>
+      <% else %>
+        <%= link_to "로그인", login_path, style: "color: #007bff; text-decoration: none; margin-right: 15px;" %>
+        <%= link_to "회원가입", signup_path, style: "color: #28a745; text-decoration: none;" %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="header" style="text-align: center; margin-bottom: 30px;">
+    <h1 style="color: #2c3e50; margin-bottom: 10px;">Hello World!</h1>
+    <p style="color: #7f8c8d; font-size: 18px;">루비온 레일즈로 만든 첫 번째 웹 애플리케이션입니다.</p>
+    <% if current_user %>
+      <p style="color: #28a745; font-weight: bold;">로그인된 사용자만 할일을 관리할 수 있습니다.</p>
+    <% else %>
+      <p style="color: #ffc107; font-weight: bold;">로그인하시면 개인 할일을 관리할 수 있습니다.</p>
+    <% end %>
+  </div>
+
+  <!-- Stimulus 컨트롤러를 사용한 카운터 -->
+  <div data-controller="counter" class="counter-section" style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin-bottom: 30px;">
+    <h3 style="color: #495057; margin-bottom: 15px;">인터랙티브 카운터</h3>
+    <div style="text-align: center;">
+      <p style="font-size: 24px; margin-bottom: 20px;">
+        현재 카운트: <span data-counter-target="count" style="font-weight: bold; color: #007bff;">0</span>
+      </p>
+      <button data-action="click->counter#increment" style="background: #28a745; color: white; border: none; padding: 10px 20px; margin: 5px; border-radius: 5px; cursor: pointer;">+1</button>
+      <button data-action="click->counter#decrement" style="background: #dc3545; color: white; border: none; padding: 10px 20px; margin: 5px; border-radius: 5px; cursor: pointer;">-1</button>
+      <button data-action="click->counter#reset" style="background: #6c757d; color: white; border: none; padding: 10px 20px; margin: 5px; border-radius: 5px; cursor: pointer;">리셋</button>
+    </div>
+  </div>
+
+  <!-- Turbo Frame을 사용한 동적 콘텐츠 -->
+  <div class="turbo-section" style="background: #e9ecef; padding: 20px; border-radius: 10px; margin-bottom: 30px;">
+    <h3 style="color: #495057; margin-bottom: 15px;">동적 콘텐츠 (Turbo Frame)</h3>
+    <%= turbo_frame_tag "dynamic_content" do %>
+      <div id="time-display" style="text-align: center; padding: 20px; background: white; border-radius: 5px;">
+        <p style="font-size: 18px; color: #6c757d;">현재 시간: <%= Time.current.strftime("%Y-%m-%d %H:%M:%S") %></p>
+        <%= link_to "시간 업데이트", update_time_path, 
+            style: "background: #007bff; color: white; text-decoration: none; padding: 10px 20px; border-radius: 5px; display: inline-block;" %>
+      </div>
+    <% end %>
+  </div>
+
+  <% if current_user %>
+    <!-- 통계 정보 섹션 -->
+    <div data-controller="stats" class="stats-section" style="background: #d1ecf1; padding: 20px; border-radius: 10px; margin-bottom: 30px;">
+      <h3 style="color: #0c5460; margin-bottom: 15px;">할일 통계</h3>
+      <div data-stats-target="display" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 15px; text-align: center;">
+        <!-- 통계 정보가 여기에 동적으로 표시됩니다 -->
+      </div>
+    </div>
+
+    <!-- Stimulus를 사용한 할일 목록 -->
+    <div data-controller="todo" class="todo-section" style="background: #fff3cd; padding: 20px; border-radius: 10px;">
+      <h3 style="color: #856404; margin-bottom: 15px;">할일 목록</h3>
+    <div style="margin-bottom: 20px;">
+      <input data-todo-target="input" type="text" placeholder="새로운 할일을 입력하세요" 
+             data-action="keydown->todo#handleKeydown"
+             style="padding: 10px; border: 1px solid #ddd; border-radius: 5px; width: 70%; margin-right: 10px;">
+      <button data-action="click->todo#add" 
+              style="background: #ffc107; color: #212529; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">추가</button>
+    </div>
+    <ul data-todo-target="list" style="list-style: none; padding: 0;">
+      <!-- 할일 목록이 여기에 동적으로 추가됩니다 -->
+    </ul>
+  </div>
+</div>
+
+)
+Caused by: ActiveSupport::SyntaxErrorProxy (/Users/seungbeenwi/Project/mini-ruby/app/views/home/index.html.erb:80: syntax error, unexpected end-of-input, expecting `end' or dummy end
+          end
+             ^
+)
+
+Information for: ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <div class="container" style="max-width: 800px; margin: 0 auto; padding: 20px; font-family: Arial, sans-serif;">
+  <!-- 네비게이션 -->
+  <div style="background: #f8f9fa; padding: 15px; border-radius: 10px; margin-bottom: 30px; display: flex; justify-content: space-between; align-items: center;">
+    <div>
+      <h2 style="margin: 0; color: #2c3e50;">Mini Ruby App</h2>
+    </div>
+    <div>
+      <% if current_user %>
+        <span style="color: #495057; margin-right: 15px;">안녕하세요, <%= current_user.full_name %>님!</span>
+        <%= link_to "프로필", profile_path, style: "color: #007bff; text-decoration: none; margin-right: 15px;" %>
+        <%= link_to "로그아웃", logout_path, method: :delete, style: "color: #dc3545; text-decoration: none;" %>
+      <% else %>
+        <%= link_to "로그인", login_path, style: "color: #007bff; text-decoration: none; margin-right: 15px;" %>
+        <%= link_to "회원가입", signup_path, style: "color: #28a745; text-decoration: none;" %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="header" style="text-align: center; margin-bottom: 30px;">
+    <h1 style="color: #2c3e50; margin-bottom: 10px;">Hello World!</h1>
+    <p style="color: #7f8c8d; font-size: 18px;">루비온 레일즈로 만든 첫 번째 웹 애플리케이션입니다.</p>
+    <% if current_user %>
+      <p style="color: #28a745; font-weight: bold;">로그인된 사용자만 할일을 관리할 수 있습니다.</p>
+    <% else %>
+      <p style="color: #ffc107; font-weight: bold;">로그인하시면 개인 할일을 관리할 수 있습니다.</p>
+    <% end %>
+  </div>
+
+  <!-- Stimulus 컨트롤러를 사용한 카운터 -->
+  <div data-controller="counter" class="counter-section" style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin-bottom: 30px;">
+    <h3 style="color: #495057; margin-bottom: 15px;">인터랙티브 카운터</h3>
+    <div style="text-align: center;">
+      <p style="font-size: 24px; margin-bottom: 20px;">
+        현재 카운트: <span data-counter-target="count" style="font-weight: bold; color: #007bff;">0</span>
+      </p>
+      <button data-action="click->counter#increment" style="background: #28a745; color: white; border: none; padding: 10px 20px; margin: 5px; border-radius: 5px; cursor: pointer;">+1</button>
+      <button data-action="click->counter#decrement" style="background: #dc3545; color: white; border: none; padding: 10px 20px; margin: 5px; border-radius: 5px; cursor: pointer;">-1</button>
+      <button data-action="click->counter#reset" style="background: #6c757d; color: white; border: none; padding: 10px 20px; margin: 5px; border-radius: 5px; cursor: pointer;">리셋</button>
+    </div>
+  </div>
+
+  <!-- Turbo Frame을 사용한 동적 콘텐츠 -->
+  <div class="turbo-section" style="background: #e9ecef; padding: 20px; border-radius: 10px; margin-bottom: 30px;">
+    <h3 style="color: #495057; margin-bottom: 15px;">동적 콘텐츠 (Turbo Frame)</h3>
+    <%= turbo_frame_tag "dynamic_content" do %>
+      <div id="time-display" style="text-align: center; padding: 20px; background: white; border-radius: 5px;">
+        <p style="font-size: 18px; color: #6c757d;">현재 시간: <%= Time.current.strftime("%Y-%m-%d %H:%M:%S") %></p>
+        <%= link_to "시간 업데이트", update_time_path, 
+            style: "background: #007bff; color: white; text-decoration: none; padding: 10px 20px; border-radius: 5px; display: inline-block;" %>
+      </div>
+    <% end %>
+  </div>
+
+  <% if current_user %>
+    <!-- 통계 정보 섹션 -->
+    <div data-controller="stats" class="stats-section" style="background: #d1ecf1; padding: 20px; border-radius: 10px; margin-bottom: 30px;">
+      <h3 style="color: #0c5460; margin-bottom: 15px;">할일 통계</h3>
+      <div data-stats-target="display" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 15px; text-align: center;">
+        <!-- 통계 정보가 여기에 동적으로 표시됩니다 -->
+      </div>
+    </div>
+
+    <!-- Stimulus를 사용한 할일 목록 -->
+    <div data-controller="todo" class="todo-section" style="background: #fff3cd; padding: 20px; border-radius: 10px;">
+      <h3 style="color: #856404; margin-bottom: 15px;">할일 목록</h3>
+    <div style="margin-bottom: 20px;">
+      <input data-todo-target="input" type="text" placeholder="새로운 할일을 입력하세요" 
+             data-action="keydown->todo#handleKeydown"
+             style="padding: 10px; border: 1px solid #ddd; border-radius: 5px; width: 70%; margin-right: 10px;">
+      <button data-action="click->todo#add" 
+              style="background: #ffc107; color: #212529; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">추가</button>
+    </div>
+    <ul data-todo-target="list" style="list-style: none; padding: 0;">
+      <!-- 할일 목록이 여기에 동적으로 추가됩니다 -->
+    </ul>
+  </div>
+</div>
+
+):
+1:    <div class="container" style="max-width: 800px; margin: 0 auto; padding: 20px; font-family: Arial, sans-serif;">
+2:      <!-- 네비게이션 -->
+3:      <div style="background: #f8f9fa; padding: 15px; border-radius: 10px; margin-bottom: 30px; display: flex; justify-content: space-between; align-items: center;">
+4:        <div>
+5:          <h2 style="margin: 0; color: #2c3e50;">Mini Ruby App</h2>
+6:        </div>
+7:        <div>
+8:          <% if current_user %>
+9:            <span style="color: #495057; margin-right: 15px;">안녕하세요, <%= current_user.full_name %>님!</span>
+10:            <%= link_to "프로필", profile_path, style: "color: #007bff; text-decoration: none; margin-right: 15px;" %>
+11:            <%= link_to "로그아웃", logout_path, method: :delete, style: "color: #dc3545; text-decoration: none;" %>
+12:          <% else %>
+13:            <%= link_to "로그인", login_path, style: "color: #007bff; text-decoration: none; margin-right: 15px;" %>
+14:            <%= link_to "회원가입", signup_path, style: "color: #28a745; text-decoration: none;" %>
+15:          <% end %>
+16:        </div>
+17:      </div>
+18:    
+19:      <div class="header" style="text-align: center; margin-bottom: 30px;">
+20:        <h1 style="color: #2c3e50; margin-bottom: 10px;">Hello World!</h1>
+21:        <p style="color: #7f8c8d; font-size: 18px;">루비온 레일즈로 만든 첫 번째 웹 애플리케이션입니다.</p>
+22:        <% if current_user %>
+23:          <p style="color: #28a745; font-weight: bold;">로그인된 사용자만 할일을 관리할 수 있습니다.</p>
+24:        <% else %>
+25:          <p style="color: #ffc107; font-weight: bold;">로그인하시면 개인 할일을 관리할 수 있습니다.</p>
+26:        <% end %>
+27:      </div>
+28:    
+29:      <!-- Stimulus 컨트롤러를 사용한 카운터 -->
+30:      <div data-controller="counter" class="counter-section" style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin-bottom: 30px;">
+31:        <h3 style="color: #495057; margin-bottom: 15px;">인터랙티브 카운터</h3>
+32:        <div style="text-align: center;">
+33:          <p style="font-size: 24px; margin-bottom: 20px;">
+34:            현재 카운트: <span data-counter-target="count" style="font-weight: bold; color: #007bff;">0</span>
+35:          </p>
+36:          <button data-action="click->counter#increment" style="background: #28a745; color: white; border: none; padding: 10px 20px; margin: 5px; border-radius: 5px; cursor: pointer;">+1</button>
+37:          <button data-action="click->counter#decrement" style="background: #dc3545; color: white; border: none; padding: 10px 20px; margin: 5px; border-radius: 5px; cursor: pointer;">-1</button>
+38:          <button data-action="click->counter#reset" style="background: #6c757d; color: white; border: none; padding: 10px 20px; margin: 5px; border-radius: 5px; cursor: pointer;">리셋</button>
+39:        </div>
+40:      </div>
+41:    
+42:      <!-- Turbo Frame을 사용한 동적 콘텐츠 -->
+43:      <div class="turbo-section" style="background: #e9ecef; padding: 20px; border-radius: 10px; margin-bottom: 30px;">
+44:        <h3 style="color: #495057; margin-bottom: 15px;">동적 콘텐츠 (Turbo Frame)</h3>
+45:        <%= turbo_frame_tag "dynamic_content" do %>
+46:          <div id="time-display" style="text-align: center; padding: 20px; background: white; border-radius: 5px;">
+47:            <p style="font-size: 18px; color: #6c757d;">현재 시간: <%= Time.current.strftime("%Y-%m-%d %H:%M:%S") %></p>
+48:            <%= link_to "시간 업데이트", update_time_path, 
+49:                style: "background: #007bff; color: white; text-decoration: none; padding: 10px 20px; border-radius: 5px; display: inline-block;" %>
+50:          </div>
+51:        <% end %>
+52:      </div>
+53:    
+54:      <% if current_user %>
+55:        <!-- 통계 정보 섹션 -->
+56:        <div data-controller="stats" class="stats-section" style="background: #d1ecf1; padding: 20px; border-radius: 10px; margin-bottom: 30px;">
+57:          <h3 style="color: #0c5460; margin-bottom: 15px;">할일 통계</h3>
+58:          <div data-stats-target="display" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 15px; text-align: center;">
+59:            <!-- 통계 정보가 여기에 동적으로 표시됩니다 -->
+60:          </div>
+61:        </div>
+62:    
+63:        <!-- Stimulus를 사용한 할일 목록 -->
+64:        <div data-controller="todo" class="todo-section" style="background: #fff3cd; padding: 20px; border-radius: 10px;">
+65:          <h3 style="color: #856404; margin-bottom: 15px;">할일 목록</h3>
+66:        <div style="margin-bottom: 20px;">
+67:          <input data-todo-target="input" type="text" placeholder="새로운 할일을 입력하세요" 
+68:                 data-action="keydown->todo#handleKeydown"
+69:                 style="padding: 10px; border: 1px solid #ddd; border-radius: 5px; width: 70%; margin-right: 10px;">
+70:          <button data-action="click->todo#add" 
+71:                  style="background: #ffc107; color: #212529; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">추가</button>
+72:        </div>
+73:        <ul data-todo-target="list" style="list-style: none; padding: 0;">
+74:          <!-- 할일 목록이 여기에 동적으로 추가됩니다 -->
+75:        </ul>
+76:      </div>
+77:    </div>
+  
+app/views/home/index.html.erb:80: syntax error, unexpected end-of-input, expecting `end' or dummy end
+
+Information for cause: ActiveSupport::SyntaxErrorProxy (/Users/seungbeenwi/Project/mini-ruby/app/views/home/index.html.erb:80: syntax error, unexpected end-of-input, expecting `end' or dummy end
+          end
+             ^
+):
+  
+app/views/home/index.html.erb:80: syntax error, unexpected end-of-input, expecting `end' or dummy end
+Started GET "/" for 127.0.0.1 at 2025-07-12 00:37:51 +0900
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.4ms | GC: 0.0ms)
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <div class="container" style="max-width: 800px; margin: 0 auto; padding: 20px; font-family: Arial, sans-serif;">
+  <!-- 네비게이션 -->
+  <div style="background: #f8f9fa; padding: 15px; border-radius: 10px; margin-bottom: 30px; display: flex; justify-content: space-between; align-items: center;">
+    <div>
+      <h2 style="margin: 0; color: #2c3e50;">Mini Ruby App</h2>
+    </div>
+    <div>
+      <% if current_user %>
+        <span style="color: #495057; margin-right: 15px;">안녕하세요, <%= current_user.full_name %>님!</span>
+        <%= link_to "프로필", profile_path, style: "color: #007bff; text-decoration: none; margin-right: 15px;" %>
+        <%= link_to "로그아웃", logout_path, method: :delete, style: "color: #dc3545; text-decoration: none;" %>
+      <% else %>
+        <%= link_to "로그인", login_path, style: "color: #007bff; text-decoration: none; margin-right: 15px;" %>
+        <%= link_to "회원가입", signup_path, style: "color: #28a745; text-decoration: none;" %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="header" style="text-align: center; margin-bottom: 30px;">
+    <h1 style="color: #2c3e50; margin-bottom: 10px;">Hello World!</h1>
+    <p style="color: #7f8c8d; font-size: 18px;">루비온 레일즈로 만든 첫 번째 웹 애플리케이션입니다.</p>
+    <% if current_user %>
+      <p style="color: #28a745; font-weight: bold;">로그인된 사용자만 할일을 관리할 수 있습니다.</p>
+    <% else %>
+      <p style="color: #ffc107; font-weight: bold;">로그인하시면 개인 할일을 관리할 수 있습니다.</p>
+    <% end %>
+  </div>
+
+  <!-- Stimulus 컨트롤러를 사용한 카운터 -->
+  <div data-controller="counter" class="counter-section" style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin-bottom: 30px;">
+    <h3 style="color: #495057; margin-bottom: 15px;">인터랙티브 카운터</h3>
+    <div style="text-align: center;">
+      <p style="font-size: 24px; margin-bottom: 20px;">
+        현재 카운트: <span data-counter-target="count" style="font-weight: bold; color: #007bff;">0</span>
+      </p>
+      <button data-action="click->counter#increment" style="background: #28a745; color: white; border: none; padding: 10px 20px; margin: 5px; border-radius: 5px; cursor: pointer;">+1</button>
+      <button data-action="click->counter#decrement" style="background: #dc3545; color: white; border: none; padding: 10px 20px; margin: 5px; border-radius: 5px; cursor: pointer;">-1</button>
+      <button data-action="click->counter#reset" style="background: #6c757d; color: white; border: none; padding: 10px 20px; margin: 5px; border-radius: 5px; cursor: pointer;">리셋</button>
+    </div>
+  </div>
+
+  <!-- Turbo Frame을 사용한 동적 콘텐츠 -->
+  <div class="turbo-section" style="background: #e9ecef; padding: 20px; border-radius: 10px; margin-bottom: 30px;">
+    <h3 style="color: #495057; margin-bottom: 15px;">동적 콘텐츠 (Turbo Frame)</h3>
+    <%= turbo_frame_tag "dynamic_content" do %>
+      <div id="time-display" style="text-align: center; padding: 20px; background: white; border-radius: 5px;">
+        <p style="font-size: 18px; color: #6c757d;">현재 시간: <%= Time.current.strftime("%Y-%m-%d %H:%M:%S") %></p>
+        <%= link_to "시간 업데이트", update_time_path, 
+            style: "background: #007bff; color: white; text-decoration: none; padding: 10px 20px; border-radius: 5px; display: inline-block;" %>
+      </div>
+    <% end %>
+  </div>
+
+  <% if current_user %>
+    <!-- 통계 정보 섹션 -->
+    <div data-controller="stats" class="stats-section" style="background: #d1ecf1; padding: 20px; border-radius: 10px; margin-bottom: 30px;">
+      <h3 style="color: #0c5460; margin-bottom: 15px;">할일 통계</h3>
+      <div data-stats-target="display" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 15px; text-align: center;">
+        <!-- 통계 정보가 여기에 동적으로 표시됩니다 -->
+      </div>
+    </div>
+
+    <!-- Stimulus를 사용한 할일 목록 -->
+    <div data-controller="todo" class="todo-section" style="background: #fff3cd; padding: 20px; border-radius: 10px;">
+      <h3 style="color: #856404; margin-bottom: 15px;">할일 목록</h3>
+    <div style="margin-bottom: 20px;">
+      <input data-todo-target="input" type="text" placeholder="새로운 할일을 입력하세요" 
+             data-action="keydown->todo#handleKeydown"
+             style="padding: 10px; border: 1px solid #ddd; border-radius: 5px; width: 70%; margin-right: 10px;">
+      <button data-action="click->todo#add" 
+              style="background: #ffc107; color: #212529; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">추가</button>
+    </div>
+    <ul data-todo-target="list" style="list-style: none; padding: 0;">
+      <!-- 할일 목록이 여기에 동적으로 추가됩니다 -->
+    </ul>
+  </div>
+</div>
+
+)
+Caused by: ActiveSupport::SyntaxErrorProxy (/Users/seungbeenwi/Project/mini-ruby/app/views/home/index.html.erb:80: syntax error, unexpected end-of-input, expecting `end' or dummy end
+          end
+             ^
+)
+
+Information for: ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <div class="container" style="max-width: 800px; margin: 0 auto; padding: 20px; font-family: Arial, sans-serif;">
+  <!-- 네비게이션 -->
+  <div style="background: #f8f9fa; padding: 15px; border-radius: 10px; margin-bottom: 30px; display: flex; justify-content: space-between; align-items: center;">
+    <div>
+      <h2 style="margin: 0; color: #2c3e50;">Mini Ruby App</h2>
+    </div>
+    <div>
+      <% if current_user %>
+        <span style="color: #495057; margin-right: 15px;">안녕하세요, <%= current_user.full_name %>님!</span>
+        <%= link_to "프로필", profile_path, style: "color: #007bff; text-decoration: none; margin-right: 15px;" %>
+        <%= link_to "로그아웃", logout_path, method: :delete, style: "color: #dc3545; text-decoration: none;" %>
+      <% else %>
+        <%= link_to "로그인", login_path, style: "color: #007bff; text-decoration: none; margin-right: 15px;" %>
+        <%= link_to "회원가입", signup_path, style: "color: #28a745; text-decoration: none;" %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="header" style="text-align: center; margin-bottom: 30px;">
+    <h1 style="color: #2c3e50; margin-bottom: 10px;">Hello World!</h1>
+    <p style="color: #7f8c8d; font-size: 18px;">루비온 레일즈로 만든 첫 번째 웹 애플리케이션입니다.</p>
+    <% if current_user %>
+      <p style="color: #28a745; font-weight: bold;">로그인된 사용자만 할일을 관리할 수 있습니다.</p>
+    <% else %>
+      <p style="color: #ffc107; font-weight: bold;">로그인하시면 개인 할일을 관리할 수 있습니다.</p>
+    <% end %>
+  </div>
+
+  <!-- Stimulus 컨트롤러를 사용한 카운터 -->
+  <div data-controller="counter" class="counter-section" style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin-bottom: 30px;">
+    <h3 style="color: #495057; margin-bottom: 15px;">인터랙티브 카운터</h3>
+    <div style="text-align: center;">
+      <p style="font-size: 24px; margin-bottom: 20px;">
+        현재 카운트: <span data-counter-target="count" style="font-weight: bold; color: #007bff;">0</span>
+      </p>
+      <button data-action="click->counter#increment" style="background: #28a745; color: white; border: none; padding: 10px 20px; margin: 5px; border-radius: 5px; cursor: pointer;">+1</button>
+      <button data-action="click->counter#decrement" style="background: #dc3545; color: white; border: none; padding: 10px 20px; margin: 5px; border-radius: 5px; cursor: pointer;">-1</button>
+      <button data-action="click->counter#reset" style="background: #6c757d; color: white; border: none; padding: 10px 20px; margin: 5px; border-radius: 5px; cursor: pointer;">리셋</button>
+    </div>
+  </div>
+
+  <!-- Turbo Frame을 사용한 동적 콘텐츠 -->
+  <div class="turbo-section" style="background: #e9ecef; padding: 20px; border-radius: 10px; margin-bottom: 30px;">
+    <h3 style="color: #495057; margin-bottom: 15px;">동적 콘텐츠 (Turbo Frame)</h3>
+    <%= turbo_frame_tag "dynamic_content" do %>
+      <div id="time-display" style="text-align: center; padding: 20px; background: white; border-radius: 5px;">
+        <p style="font-size: 18px; color: #6c757d;">현재 시간: <%= Time.current.strftime("%Y-%m-%d %H:%M:%S") %></p>
+        <%= link_to "시간 업데이트", update_time_path, 
+            style: "background: #007bff; color: white; text-decoration: none; padding: 10px 20px; border-radius: 5px; display: inline-block;" %>
+      </div>
+    <% end %>
+  </div>
+
+  <% if current_user %>
+    <!-- 통계 정보 섹션 -->
+    <div data-controller="stats" class="stats-section" style="background: #d1ecf1; padding: 20px; border-radius: 10px; margin-bottom: 30px;">
+      <h3 style="color: #0c5460; margin-bottom: 15px;">할일 통계</h3>
+      <div data-stats-target="display" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 15px; text-align: center;">
+        <!-- 통계 정보가 여기에 동적으로 표시됩니다 -->
+      </div>
+    </div>
+
+    <!-- Stimulus를 사용한 할일 목록 -->
+    <div data-controller="todo" class="todo-section" style="background: #fff3cd; padding: 20px; border-radius: 10px;">
+      <h3 style="color: #856404; margin-bottom: 15px;">할일 목록</h3>
+    <div style="margin-bottom: 20px;">
+      <input data-todo-target="input" type="text" placeholder="새로운 할일을 입력하세요" 
+             data-action="keydown->todo#handleKeydown"
+             style="padding: 10px; border: 1px solid #ddd; border-radius: 5px; width: 70%; margin-right: 10px;">
+      <button data-action="click->todo#add" 
+              style="background: #ffc107; color: #212529; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">추가</button>
+    </div>
+    <ul data-todo-target="list" style="list-style: none; padding: 0;">
+      <!-- 할일 목록이 여기에 동적으로 추가됩니다 -->
+    </ul>
+  </div>
+</div>
+
+):
+1:    <div class="container" style="max-width: 800px; margin: 0 auto; padding: 20px; font-family: Arial, sans-serif;">
+2:      <!-- 네비게이션 -->
+3:      <div style="background: #f8f9fa; padding: 15px; border-radius: 10px; margin-bottom: 30px; display: flex; justify-content: space-between; align-items: center;">
+4:        <div>
+5:          <h2 style="margin: 0; color: #2c3e50;">Mini Ruby App</h2>
+6:        </div>
+7:        <div>
+8:          <% if current_user %>
+9:            <span style="color: #495057; margin-right: 15px;">안녕하세요, <%= current_user.full_name %>님!</span>
+10:            <%= link_to "프로필", profile_path, style: "color: #007bff; text-decoration: none; margin-right: 15px;" %>
+11:            <%= link_to "로그아웃", logout_path, method: :delete, style: "color: #dc3545; text-decoration: none;" %>
+12:          <% else %>
+13:            <%= link_to "로그인", login_path, style: "color: #007bff; text-decoration: none; margin-right: 15px;" %>
+14:            <%= link_to "회원가입", signup_path, style: "color: #28a745; text-decoration: none;" %>
+15:          <% end %>
+16:        </div>
+17:      </div>
+18:    
+19:      <div class="header" style="text-align: center; margin-bottom: 30px;">
+20:        <h1 style="color: #2c3e50; margin-bottom: 10px;">Hello World!</h1>
+21:        <p style="color: #7f8c8d; font-size: 18px;">루비온 레일즈로 만든 첫 번째 웹 애플리케이션입니다.</p>
+22:        <% if current_user %>
+23:          <p style="color: #28a745; font-weight: bold;">로그인된 사용자만 할일을 관리할 수 있습니다.</p>
+24:        <% else %>
+25:          <p style="color: #ffc107; font-weight: bold;">로그인하시면 개인 할일을 관리할 수 있습니다.</p>
+26:        <% end %>
+27:      </div>
+28:    
+29:      <!-- Stimulus 컨트롤러를 사용한 카운터 -->
+30:      <div data-controller="counter" class="counter-section" style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin-bottom: 30px;">
+31:        <h3 style="color: #495057; margin-bottom: 15px;">인터랙티브 카운터</h3>
+32:        <div style="text-align: center;">
+33:          <p style="font-size: 24px; margin-bottom: 20px;">
+34:            현재 카운트: <span data-counter-target="count" style="font-weight: bold; color: #007bff;">0</span>
+35:          </p>
+36:          <button data-action="click->counter#increment" style="background: #28a745; color: white; border: none; padding: 10px 20px; margin: 5px; border-radius: 5px; cursor: pointer;">+1</button>
+37:          <button data-action="click->counter#decrement" style="background: #dc3545; color: white; border: none; padding: 10px 20px; margin: 5px; border-radius: 5px; cursor: pointer;">-1</button>
+38:          <button data-action="click->counter#reset" style="background: #6c757d; color: white; border: none; padding: 10px 20px; margin: 5px; border-radius: 5px; cursor: pointer;">리셋</button>
+39:        </div>
+40:      </div>
+41:    
+42:      <!-- Turbo Frame을 사용한 동적 콘텐츠 -->
+43:      <div class="turbo-section" style="background: #e9ecef; padding: 20px; border-radius: 10px; margin-bottom: 30px;">
+44:        <h3 style="color: #495057; margin-bottom: 15px;">동적 콘텐츠 (Turbo Frame)</h3>
+45:        <%= turbo_frame_tag "dynamic_content" do %>
+46:          <div id="time-display" style="text-align: center; padding: 20px; background: white; border-radius: 5px;">
+47:            <p style="font-size: 18px; color: #6c757d;">현재 시간: <%= Time.current.strftime("%Y-%m-%d %H:%M:%S") %></p>
+48:            <%= link_to "시간 업데이트", update_time_path, 
+49:                style: "background: #007bff; color: white; text-decoration: none; padding: 10px 20px; border-radius: 5px; display: inline-block;" %>
+50:          </div>
+51:        <% end %>
+52:      </div>
+53:    
+54:      <% if current_user %>
+55:        <!-- 통계 정보 섹션 -->
+56:        <div data-controller="stats" class="stats-section" style="background: #d1ecf1; padding: 20px; border-radius: 10px; margin-bottom: 30px;">
+57:          <h3 style="color: #0c5460; margin-bottom: 15px;">할일 통계</h3>
+58:          <div data-stats-target="display" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 15px; text-align: center;">
+59:            <!-- 통계 정보가 여기에 동적으로 표시됩니다 -->
+60:          </div>
+61:        </div>
+62:    
+63:        <!-- Stimulus를 사용한 할일 목록 -->
+64:        <div data-controller="todo" class="todo-section" style="background: #fff3cd; padding: 20px; border-radius: 10px;">
+65:          <h3 style="color: #856404; margin-bottom: 15px;">할일 목록</h3>
+66:        <div style="margin-bottom: 20px;">
+67:          <input data-todo-target="input" type="text" placeholder="새로운 할일을 입력하세요" 
+68:                 data-action="keydown->todo#handleKeydown"
+69:                 style="padding: 10px; border: 1px solid #ddd; border-radius: 5px; width: 70%; margin-right: 10px;">
+70:          <button data-action="click->todo#add" 
+71:                  style="background: #ffc107; color: #212529; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">추가</button>
+72:        </div>
+73:        <ul data-todo-target="list" style="list-style: none; padding: 0;">
+74:          <!-- 할일 목록이 여기에 동적으로 추가됩니다 -->
+75:        </ul>
+76:      </div>
+77:    </div>
+  
+app/views/home/index.html.erb:80: syntax error, unexpected end-of-input, expecting `end' or dummy end
+
+Information for cause: ActiveSupport::SyntaxErrorProxy (/Users/seungbeenwi/Project/mini-ruby/app/views/home/index.html.erb:80: syntax error, unexpected end-of-input, expecting `end' or dummy end
+          end
+             ^
+):
+  
+app/views/home/index.html.erb:80: syntax error, unexpected end-of-input, expecting `end' or dummy end
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='HelloWorldApp'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='HelloWorldApp'*/[0m
+  [1m[36mUser Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1 /*application='HelloWorldApp'*/[0m
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("email", "crypted_password", "salt", "created_at", "updated_at") VALUES ('test@example.com', '$2a$10$q6ViuB6skYUj4aC9MdTQ6u8as8Hrz8p7OVg3ug0CYExeJcvSbYPDq', 'kHpZxv2Rb7Lrk2_e7D4P', '2025-07-11 15:38:29.246359', '2025-07-11 15:38:29.246359') RETURNING "id" /*application='HelloWorldApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='HelloWorldApp'*/[0m
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='HelloWorldApp'*/[0m
+  [1m[36mUser Exists? (2.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'demo@example.com' LIMIT 1 /*application='HelloWorldApp'*/[0m
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("email", "crypted_password", "salt", "created_at", "updated_at") VALUES ('demo@example.com', '$2a$10$byYcjVAZJCicjpVgjfaxTejXvGcmaofotnarNj4F3VtR59v4OZaPm', 'nFsBrCxjvqCvsZbmEUf9', '2025-07-11 15:38:29.296488', '2025-07-11 15:38:29.296488') RETURNING "id" /*application='HelloWorldApp'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='HelloWorldApp'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='HelloWorldApp'*/[0m
+  [1m[36mTodo Create (0.4ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at", "user_id") VALUES ('루비온 레일즈 학습하기', 0, '2025-07-11 15:38:29.317018', '2025-07-11 15:38:29.317018', 1) RETURNING "id" /*application='HelloWorldApp'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='HelloWorldApp'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='HelloWorldApp'*/[0m
+  [1m[36mTodo Create (0.5ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at", "user_id") VALUES ('Hotwire 튜토리얼 완료하기', 1, '2025-07-11 15:38:29.322765', '2025-07-11 15:38:29.322765', 1) RETURNING "id" /*application='HelloWorldApp'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='HelloWorldApp'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='HelloWorldApp'*/[0m
+  [1m[36mTodo Create (0.4ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at", "user_id") VALUES ('SQLite 데이터베이스 설정하기', 1, '2025-07-11 15:38:29.327025', '2025-07-11 15:38:29.327025', 1) RETURNING "id" /*application='HelloWorldApp'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='HelloWorldApp'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='HelloWorldApp'*/[0m
+  [1m[36mTodo Create (0.5ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at", "user_id") VALUES ('REST API 구현하기', 0, '2025-07-11 15:38:29.333725', '2025-07-11 15:38:29.333725', 2) RETURNING "id" /*application='HelloWorldApp'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='HelloWorldApp'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='HelloWorldApp'*/[0m
+  [1m[36mTodo Create (0.3ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at", "user_id") VALUES ('프론트엔드와 백엔드 연동하기', 0, '2025-07-11 15:38:29.337342', '2025-07-11 15:38:29.337342', 2) RETURNING "id" /*application='HelloWorldApp'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='HelloWorldApp'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='HelloWorldApp'*/[0m
+  [1m[36mTodo Create (0.3ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "created_at", "updated_at", "user_id") VALUES ('Sorcery 인증 구현하기', 1, '2025-07-11 15:38:29.338588', '2025-07-11 15:38:29.338588', 2) RETURNING "id" /*application='HelloWorldApp'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='HelloWorldApp'*/[0m
+  [1m[36mUser Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" /*application='HelloWorldApp'*/[0m
+  [1m[36mTodo Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" /*application='HelloWorldApp'*/[0m
+Started GET "/" for ::1 at 2025-07-12 00:39:22 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='HelloWorldApp'*/[0m
+Processing by HomeController#index as */*
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 16.5ms | GC: 6.3ms)
+Completed 200 OK in 50ms (Views: 20.5ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 6.3ms)
+
+
