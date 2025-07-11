@@ -15,6 +15,17 @@
     </div>
   <% end %>
 
+  <!-- 디버깅 정보 -->
+  <% if Rails.env.development? %>
+    <div style="background: #e2e3e5; padding: 10px; border-radius: 5px; margin-bottom: 20px; font-size: 12px;">
+      <strong>디버깅 정보:</strong><br>
+      세션 ID: <%= session.id %><br>
+      CSRF 토큰: <%= form_authenticity_token %><br>
+      쿠키 수: <%= cookies.count %><br>
+      현재 시간: <%= Time.current %>
+    </div>
+  <% end %>
+
   <%= form_with model: @user, url: signup_path, local: true, style: "background: #f8f9fa; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);" do |form| %>
     <div style="margin-bottom: 20px;">
       <%= form.label :email, "이메일", style: "display: block; margin-bottom: 5px; font-weight: bold; color: #495057;" %>

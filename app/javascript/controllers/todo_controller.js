@@ -110,8 +110,14 @@ export default class extends Controller {
 
   handleKeydown(event) {
     if (event.key === "Enter") {
+      event.preventDefault()  // 브라우저의 기본 동작 방지
       this.add()
     }
+  }
+
+  handleSubmit(event) {
+    event.preventDefault()  // 폼 제출 기본 동작 방지
+    this.add()
   }
 
   render() {
