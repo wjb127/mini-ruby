@@ -1,0 +1,8 @@
+<%= turbo_frame_tag "dynamic_content" do %>
+  <div id="time-display" style="text-align: center; padding: 20px; background: white; border-radius: 5px;">
+    <p style="font-size: 18px; color: #6c757d;">현재 시간: <%= Time.current.strftime("%Y-%m-%d %H:%M:%S") %></p>
+    <p style="font-size: 14px; color: #28a745; margin-top: 10px;">✓ 업데이트 완료!</p>
+    <%= link_to "시간 업데이트", update_time_path, 
+        style: "background: #007bff; color: white; text-decoration: none; padding: 10px 20px; border-radius: 5px; display: inline-block;" %>
+  </div>
+<% end %> 

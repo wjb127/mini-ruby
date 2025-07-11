@@ -1,0 +1,54 @@
+<div class="container" style="max-width: 800px; margin: 0 auto; padding: 20px; font-family: Arial, sans-serif;">
+  <div class="header" style="text-align: center; margin-bottom: 30px;">
+    <h1 style="color: #2c3e50; margin-bottom: 10px;">Hello World!</h1>
+    <p style="color: #7f8c8d; font-size: 18px;">루비온 레일즈로 만든 첫 번째 웹 애플리케이션입니다.</p>
+  </div>
+
+  <!-- Stimulus 컨트롤러를 사용한 카운터 -->
+  <div data-controller="counter" class="counter-section" style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin-bottom: 30px;">
+    <h3 style="color: #495057; margin-bottom: 15px;">인터랙티브 카운터</h3>
+    <div style="text-align: center;">
+      <p style="font-size: 24px; margin-bottom: 20px;">
+        현재 카운트: <span data-counter-target="count" style="font-weight: bold; color: #007bff;">0</span>
+      </p>
+      <button data-action="click->counter#increment" style="background: #28a745; color: white; border: none; padding: 10px 20px; margin: 5px; border-radius: 5px; cursor: pointer;">+1</button>
+      <button data-action="click->counter#decrement" style="background: #dc3545; color: white; border: none; padding: 10px 20px; margin: 5px; border-radius: 5px; cursor: pointer;">-1</button>
+      <button data-action="click->counter#reset" style="background: #6c757d; color: white; border: none; padding: 10px 20px; margin: 5px; border-radius: 5px; cursor: pointer;">리셋</button>
+    </div>
+  </div>
+
+  <!-- Turbo Frame을 사용한 동적 콘텐츠 -->
+  <div class="turbo-section" style="background: #e9ecef; padding: 20px; border-radius: 10px; margin-bottom: 30px;">
+    <h3 style="color: #495057; margin-bottom: 15px;">동적 콘텐츠 (Turbo Frame)</h3>
+    <%= turbo_frame_tag "dynamic_content" do %>
+      <div id="time-display" style="text-align: center; padding: 20px; background: white; border-radius: 5px;">
+        <p style="font-size: 18px; color: #6c757d;">현재 시간: <%= Time.current.strftime("%Y-%m-%d %H:%M:%S") %></p>
+        <%= link_to "시간 업데이트", update_time_path, 
+            style: "background: #007bff; color: white; text-decoration: none; padding: 10px 20px; border-radius: 5px; display: inline-block;" %>
+      </div>
+    <% end %>
+  </div>
+
+  <!-- 통계 정보 섹션 -->
+  <div data-controller="stats" class="stats-section" style="background: #d1ecf1; padding: 20px; border-radius: 10px; margin-bottom: 30px;">
+    <h3 style="color: #0c5460; margin-bottom: 15px;">할일 통계</h3>
+    <div data-stats-target="display" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 15px; text-align: center;">
+      <!-- 통계 정보가 여기에 동적으로 표시됩니다 -->
+    </div>
+  </div>
+
+  <!-- Stimulus를 사용한 할일 목록 -->
+  <div data-controller="todo" class="todo-section" style="background: #fff3cd; padding: 20px; border-radius: 10px;">
+    <h3 style="color: #856404; margin-bottom: 15px;">할일 목록</h3>
+    <div style="margin-bottom: 20px;">
+      <input data-todo-target="input" type="text" placeholder="새로운 할일을 입력하세요" 
+             data-action="keydown->todo#handleKeydown"
+             style="padding: 10px; border: 1px solid #ddd; border-radius: 5px; width: 70%; margin-right: 10px;">
+      <button data-action="click->todo#add" 
+              style="background: #ffc107; color: #212529; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">추가</button>
+    </div>
+    <ul data-todo-target="list" style="list-style: none; padding: 0;">
+      <!-- 할일 목록이 여기에 동적으로 추가됩니다 -->
+    </ul>
+  </div>
+</div>
