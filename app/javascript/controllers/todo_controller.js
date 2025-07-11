@@ -5,6 +5,9 @@ export default class extends Controller {
 
   connect() {
     this.loadTodos()
+    this.isSubmitting = false  // 중복 실행 방지 플래그
+    this.lastSubmittedText = ""  // 마지막 제출된 텍스트
+    this.lastSubmitTime = 0  // 마지막 제출 시간
   }
 
   async loadTodos() {
@@ -21,6 +24,18 @@ export default class extends Controller {
   async add() {
     const todoText = this.inputTarget.value.trim()
     if (todoText === "") return
+
+    // 중복 실행 방지 - 다중 조건 체크
+    const now = Date.now()
+    if (this.isSubmitting || 
+        (todoText === this.lastSubmittedText && now - this.lastSubmitTime < 2000)) {
+      console.log('중복 제출 방지됨')
+      return
+    }
+    
+    this.isSubmitting = true  // 플래그 설정
+    this.lastSubmittedText = todoText  // 마지막 텍스트 저장
+    this.lastSubmitTime = now  // 마지막 제출 시간 저장
 
     try {
       const response = await fetch('/api/todos', {
@@ -41,6 +56,7 @@ export default class extends Controller {
         const newTodo = await response.json()
         this.todos.unshift(newTodo)
         this.inputTarget.value = ""
+        this.lastSubmittedText = ""  // 성공 시 마지막 텍스트 초기화
         this.render()
         this.updateStats()
       } else {
@@ -49,6 +65,11 @@ export default class extends Controller {
       }
     } catch (error) {
       console.error('Network error:', error)
+    } finally {
+      // 1초 후 플래그 해제 (더 긴 디바운싱)
+      setTimeout(() => {
+        this.isSubmitting = false
+      }, 1000)
     }
   }
 
@@ -105,13 +126,6 @@ export default class extends Controller {
       }
     } catch (error) {
       console.error('Network error:', error)
-    }
-  }
-
-  handleKeydown(event) {
-    if (event.key === "Enter") {
-      event.preventDefault()  // 브라우저의 기본 동작 방지
-      this.add()
     }
   }
 

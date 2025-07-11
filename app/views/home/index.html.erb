@@ -65,9 +65,8 @@
       <h3 style="color: #856404; margin-bottom: 15px;">할일 목록</h3>
       <form data-action="submit->todo#handleSubmit" style="margin-bottom: 20px;">
         <input data-todo-target="input" type="text" placeholder="새로운 할일을 입력하세요" 
-               data-action="keydown->todo#handleKeydown"
                style="padding: 10px; border: 1px solid #ddd; border-radius: 5px; width: 70%; margin-right: 10px;">
-        <button type="button" data-action="click->todo#add" 
+        <button type="submit" 
                 style="background: #ffc107; color: #212529; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">추가</button>
       </form>
       <ul data-todo-target="list" style="list-style: none; padding: 0;">
