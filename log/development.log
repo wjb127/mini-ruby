@@ -3354,3 +3354,291 @@ Processing by Api::TodosController#stats as */*
 Completed 200 OK in 20ms (Views: 0.0ms | ActiveRecord: 0.1ms (4 queries, 0 cached) | GC: 0.0ms)
 
 
+Started GET "/api/todos/stats" for 127.0.0.1 at 2025-07-12 01:04:25 +0900
+Processing by Api::TodosController#stats as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  [1m[36mTodo Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:13:in `stats'
+  [1m[36mTodo Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 AND "todos"."completed" = 1 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:14:in `stats'
+  [1m[36mTodo Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 AND "todos"."completed" = 0 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:15:in `stats'
+Completed 200 OK in 19ms (Views: 0.0ms | ActiveRecord: 0.1ms (4 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/todos/stats" for 127.0.0.1 at 2025-07-12 01:05:25 +0900
+Processing by Api::TodosController#stats as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  [1m[36mTodo Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:13:in `stats'
+  [1m[36mTodo Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 AND "todos"."completed" = 1 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:14:in `stats'
+  [1m[36mTodo Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 AND "todos"."completed" = 0 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:15:in `stats'
+Completed 200 OK in 20ms (Views: 0.1ms | ActiveRecord: 0.2ms (4 queries, 0 cached) | GC: 4.2ms)
+
+
+Started GET "/api/todos/stats" for 127.0.0.1 at 2025-07-12 01:06:26 +0900
+Processing by Api::TodosController#stats as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  [1m[36mTodo Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:13:in `stats'
+  [1m[36mTodo Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 AND "todos"."completed" = 1 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:14:in `stats'
+  [1m[36mTodo Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 AND "todos"."completed" = 0 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:15:in `stats'
+Completed 200 OK in 35ms (Views: 0.1ms | ActiveRecord: 0.1ms (4 queries, 0 cached) | GC: 0.8ms)
+
+
+Started GET "/api/todos/stats" for 127.0.0.1 at 2025-07-12 01:07:01 +0900
+Processing by Api::TodosController#stats as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  [1m[36mTodo Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:13:in `stats'
+  [1m[36mTodo Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 AND "todos"."completed" = 1 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:14:in `stats'
+  [1m[36mTodo Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 AND "todos"."completed" = 0 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:15:in `stats'
+Completed 200 OK in 25ms (Views: 0.1ms | ActiveRecord: 0.3ms (4 queries, 0 cached) | GC: 1.0ms)
+
+
+Started GET "/api/todos/stats" for 127.0.0.1 at 2025-07-12 01:07:05 +0900
+Processing by Api::TodosController#stats as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  [1m[36mTodo Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:13:in `stats'
+  [1m[36mTodo Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 AND "todos"."completed" = 1 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:14:in `stats'
+  [1m[36mTodo Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 AND "todos"."completed" = 0 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:15:in `stats'
+Completed 200 OK in 28ms (Views: 0.0ms | ActiveRecord: 0.2ms (4 queries, 0 cached) | GC: 0.3ms)
+
+
+Started GET "/api/todos/stats" for 127.0.0.1 at 2025-07-12 01:07:10 +0900
+Processing by Api::TodosController#stats as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  [1m[36mTodo Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:13:in `stats'
+  [1m[36mTodo Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 AND "todos"."completed" = 1 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:14:in `stats'
+  [1m[36mTodo Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 AND "todos"."completed" = 0 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:15:in `stats'
+Completed 200 OK in 30ms (Views: 0.0ms | ActiveRecord: 0.2ms (4 queries, 0 cached) | GC: 0.5ms)
+
+
+Started GET "/api/todos/stats" for 127.0.0.1 at 2025-07-12 01:07:15 +0900
+Processing by Api::TodosController#stats as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  [1m[36mTodo Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:13:in `stats'
+  [1m[36mTodo Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 AND "todos"."completed" = 1 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:14:in `stats'
+  [1m[36mTodo Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 AND "todos"."completed" = 0 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:15:in `stats'
+Completed 200 OK in 27ms (Views: 0.0ms | ActiveRecord: 0.2ms (4 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/todos/stats" for 127.0.0.1 at 2025-07-12 01:07:20 +0900
+Processing by Api::TodosController#stats as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  [1m[36mTodo Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:13:in `stats'
+  [1m[36mTodo Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 AND "todos"."completed" = 1 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:14:in `stats'
+  [1m[36mTodo Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 AND "todos"."completed" = 0 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:15:in `stats'
+Completed 200 OK in 29ms (Views: 0.1ms | ActiveRecord: 0.2ms (4 queries, 0 cached) | GC: 1.6ms)
+
+
+Started GET "/api/todos/stats" for 127.0.0.1 at 2025-07-12 01:07:25 +0900
+Processing by Api::TodosController#stats as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  [1m[36mTodo Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:13:in `stats'
+  [1m[36mTodo Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 AND "todos"."completed" = 1 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:14:in `stats'
+  [1m[36mTodo Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 AND "todos"."completed" = 0 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:15:in `stats'
+Completed 200 OK in 24ms (Views: 0.1ms | ActiveRecord: 0.2ms (4 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/todos/stats" for 127.0.0.1 at 2025-07-12 01:07:30 +0900
+Processing by Api::TodosController#stats as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  [1m[36mTodo Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:13:in `stats'
+  [1m[36mTodo Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 AND "todos"."completed" = 1 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:14:in `stats'
+  [1m[36mTodo Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 AND "todos"."completed" = 0 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:15:in `stats'
+Completed 200 OK in 27ms (Views: 0.0ms | ActiveRecord: 0.1ms (4 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/todos/stats" for 127.0.0.1 at 2025-07-12 01:07:35 +0900
+Processing by Api::TodosController#stats as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  [1m[36mTodo Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:13:in `stats'
+  [1m[36mTodo Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 AND "todos"."completed" = 1 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:14:in `stats'
+  [1m[36mTodo Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 AND "todos"."completed" = 0 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:15:in `stats'
+Completed 200 OK in 28ms (Views: 0.0ms | ActiveRecord: 0.2ms (4 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/todos/stats" for 127.0.0.1 at 2025-07-12 01:07:40 +0900
+Processing by Api::TodosController#stats as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  [1m[36mTodo Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:13:in `stats'
+  [1m[36mTodo Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 AND "todos"."completed" = 1 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:14:in `stats'
+  [1m[36mTodo Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 AND "todos"."completed" = 0 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:15:in `stats'
+Completed 200 OK in 30ms (Views: 0.0ms | ActiveRecord: 0.2ms (4 queries, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/api/todos/stats" for 127.0.0.1 at 2025-07-12 01:07:45 +0900
+Processing by Api::TodosController#stats as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  [1m[36mTodo Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:13:in `stats'
+  [1m[36mTodo Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 AND "todos"."completed" = 1 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:14:in `stats'
+  [1m[36mTodo Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 AND "todos"."completed" = 0 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:15:in `stats'
+Completed 200 OK in 33ms (Views: 0.1ms | ActiveRecord: 0.3ms (4 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/todos/stats" for 127.0.0.1 at 2025-07-12 01:07:50 +0900
+Processing by Api::TodosController#stats as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  [1m[36mTodo Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:13:in `stats'
+  [1m[36mTodo Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 AND "todos"."completed" = 1 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:14:in `stats'
+  [1m[36mTodo Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 AND "todos"."completed" = 0 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:15:in `stats'
+Completed 200 OK in 27ms (Views: 0.0ms | ActiveRecord: 0.2ms (4 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/todos/stats" for 127.0.0.1 at 2025-07-12 01:07:55 +0900
+Processing by Api::TodosController#stats as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  [1m[36mTodo Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:13:in `stats'
+  [1m[36mTodo Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 AND "todos"."completed" = 1 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:14:in `stats'
+  [1m[36mTodo Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 AND "todos"."completed" = 0 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:15:in `stats'
+Completed 200 OK in 27ms (Views: 0.0ms | ActiveRecord: 0.2ms (4 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/todos/stats" for 127.0.0.1 at 2025-07-12 01:08:00 +0900
+Processing by Api::TodosController#stats as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  [1m[36mTodo Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:13:in `stats'
+  [1m[36mTodo Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 AND "todos"."completed" = 1 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:14:in `stats'
+  [1m[36mTodo Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 AND "todos"."completed" = 0 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:15:in `stats'
+Completed 200 OK in 26ms (Views: 0.0ms | ActiveRecord: 0.2ms (4 queries, 0 cached) | GC: 0.4ms)
+
+
+Started GET "/api/todos/stats" for 127.0.0.1 at 2025-07-12 01:08:25 +0900
+Processing by Api::TodosController#stats as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  [1m[36mTodo Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:13:in `stats'
+  [1m[36mTodo Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 AND "todos"."completed" = 1 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:14:in `stats'
+  [1m[36mTodo Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 AND "todos"."completed" = 0 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:15:in `stats'
+Completed 200 OK in 33ms (Views: 0.0ms | ActiveRecord: 0.2ms (4 queries, 0 cached) | GC: 0.4ms)
+
+
+Started GET "/api/todos/stats" for 127.0.0.1 at 2025-07-12 01:09:25 +0900
+Processing by Api::TodosController#stats as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  [1m[36mTodo Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:13:in `stats'
+  [1m[36mTodo Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 AND "todos"."completed" = 1 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:14:in `stats'
+  [1m[36mTodo Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 AND "todos"."completed" = 0 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:15:in `stats'
+Completed 200 OK in 20ms (Views: 0.0ms | ActiveRecord: 0.1ms (4 queries, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/api/todos/stats" for 127.0.0.1 at 2025-07-12 01:10:25 +0900
+Processing by Api::TodosController#stats as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  [1m[36mTodo Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:13:in `stats'
+  [1m[36mTodo Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 AND "todos"."completed" = 1 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:14:in `stats'
+  [1m[36mTodo Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 AND "todos"."completed" = 0 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:15:in `stats'
+Completed 200 OK in 17ms (Views: 0.1ms | ActiveRecord: 0.2ms (4 queries, 0 cached) | GC: 0.5ms)
+
+
+Started GET "/api/todos/stats" for 127.0.0.1 at 2025-07-12 01:11:25 +0900
+Processing by Api::TodosController#stats as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  [1m[36mTodo Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:13:in `stats'
+  [1m[36mTodo Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 AND "todos"."completed" = 1 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:14:in `stats'
+  [1m[36mTodo Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 AND "todos"."completed" = 0 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:15:in `stats'
+Completed 200 OK in 23ms (Views: 0.0ms | ActiveRecord: 0.1ms (4 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/todos/stats" for 127.0.0.1 at 2025-07-12 01:12:25 +0900
+Processing by Api::TodosController#stats as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  [1m[36mTodo Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:13:in `stats'
+  [1m[36mTodo Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 AND "todos"."completed" = 1 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:14:in `stats'
+  [1m[36mTodo Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 AND "todos"."completed" = 0 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:15:in `stats'
+Completed 200 OK in 32ms (Views: 0.1ms | ActiveRecord: 0.6ms (4 queries, 0 cached) | GC: 2.6ms)
+
+
+Started GET "/api/todos/stats" for 127.0.0.1 at 2025-07-12 01:13:25 +0900
+Processing by Api::TodosController#stats as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  [1m[36mTodo Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:13:in `stats'
+  [1m[36mTodo Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 AND "todos"."completed" = 1 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:14:in `stats'
+  [1m[36mTodo Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 AND "todos"."completed" = 0 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:15:in `stats'
+Completed 200 OK in 36ms (Views: 0.1ms | ActiveRecord: 0.4ms (4 queries, 0 cached) | GC: 1.5ms)
+
+
+Started GET "/api/todos/stats" for 127.0.0.1 at 2025-07-12 01:14:25 +0900
+Processing by Api::TodosController#stats as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  [1m[36mTodo Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:13:in `stats'
+  [1m[36mTodo Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 AND "todos"."completed" = 1 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:14:in `stats'
+  [1m[36mTodo Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 AND "todos"."completed" = 0 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:15:in `stats'
+Completed 200 OK in 21ms (Views: 0.0ms | ActiveRecord: 0.1ms (4 queries, 0 cached) | GC: 0.5ms)
+
+
+Started GET "/api/todos/stats" for 127.0.0.1 at 2025-07-12 01:15:25 +0900
+Processing by Api::TodosController#stats as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  [1m[36mTodo Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:13:in `stats'
+  [1m[36mTodo Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 AND "todos"."completed" = 1 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:14:in `stats'
+  [1m[36mTodo Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "todos" WHERE "todos"."user_id" = 3 AND "todos"."completed" = 0 /*action='stats',application='HelloWorldApp',controller='todos'*/[0m
+  ↳ app/controllers/api/todos_controller.rb:15:in `stats'
+Completed 200 OK in 19ms (Views: 0.0ms | ActiveRecord: 0.2ms (4 queries, 0 cached) | GC: 0.4ms)
+
+
