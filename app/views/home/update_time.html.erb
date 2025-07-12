@@ -1,8 +1,17 @@
 <%= turbo_frame_tag "dynamic_content" do %>
-  <div id="time-display" style="text-align: center; padding: 20px; background: white; border-radius: 5px;">
-    <p style="font-size: 18px; color: #6c757d;">현재 시간: <%= Time.current.strftime("%Y-%m-%d %H:%M:%S") %></p>
-    <p style="font-size: 14px; color: #28a745; margin-top: 10px;">✓ 업데이트 완료!</p>
-    <%= link_to "시간 업데이트", update_time_path, 
-        style: "background: #007bff; color: white; text-decoration: none; padding: 10px 20px; border-radius: 5px; display: inline-block;" %>
+  <div id="time-display" class="text-center">
+    <div class="bg-white rounded-lg p-6 shadow-md">
+      <p class="text-xl text-gray-700 mb-4">
+        현재 시간: <span class="font-mono font-bold text-blue-600"><%= Time.current.strftime("%Y-%m-%d %H:%M:%S") %></span>
+      </p>
+      <div class="flex items-center justify-center mb-4">
+        <svg class="h-6 w-6 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <p class="text-green-600 font-semibold">업데이트 완료!</p>
+      </div>
+      <%= link_to "시간 업데이트", update_time_path, 
+          class: "bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg transition-colors transform hover:scale-105 inline-block" %>
+    </div>
   </div>
 <% end %> 

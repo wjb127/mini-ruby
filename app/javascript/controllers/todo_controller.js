@@ -140,30 +140,36 @@ export default class extends Controller {
     if (this.todos.length === 0) {
       const emptyMessage = document.createElement("li")
       emptyMessage.textContent = "할일이 없습니다. 새로운 할일을 추가해보세요!"
-      emptyMessage.style.cssText = "text-align: center; color: #6c757d; font-style: italic; padding: 20px;"
+      emptyMessage.className = "text-center text-gray-500 italic py-8 text-lg animate-fade-in"
       this.listTarget.appendChild(emptyMessage)
       return
     }
     
-    this.todos.forEach(todo => {
+    this.todos.forEach((todo, index) => {
       const li = document.createElement("li")
-      li.style.cssText = "padding: 10px; margin: 5px 0; background: white; border-radius: 5px; display: flex; align-items: center; justify-content: space-between;"
+      li.className = "bg-white rounded-xl p-4 shadow-lg flex items-center justify-between hover:shadow-xl transition-all animate-slide-in hover-lift"
+      li.style.animationDelay = `${index * 0.1}s`
       
       const textSpan = document.createElement("span")
       textSpan.textContent = todo.title
-      textSpan.style.cssText = todo.completed ? "text-decoration: line-through; color: #6c757d;" : "color: #212529;"
+      textSpan.className = todo.completed ? 
+        "text-gray-500 line-through text-lg" : 
+        "text-gray-800 text-lg font-medium"
       
       const buttonContainer = document.createElement("div")
+      buttonContainer.className = "flex space-x-2"
       
       const toggleButton = document.createElement("button")
       toggleButton.textContent = todo.completed ? "완료 취소" : "완료"
-      toggleButton.style.cssText = `background: ${todo.completed ? '#ffc107' : '#28a745'}; color: ${todo.completed ? '#212529' : 'white'}; border: none; padding: 5px 10px; margin-right: 5px; border-radius: 3px; cursor: pointer;`
+      toggleButton.className = todo.completed ? 
+        "bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-white px-3 py-1 rounded-md text-sm font-medium transition-all transform hover:scale-105 shadow-md" :
+        "bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white px-3 py-1 rounded-md text-sm font-medium transition-all transform hover:scale-105 shadow-md"
       toggleButton.dataset.todoId = todo.id
       toggleButton.addEventListener("click", this.toggle.bind(this))
       
       const removeButton = document.createElement("button")
       removeButton.textContent = "삭제"
-      removeButton.style.cssText = "background: #dc3545; color: white; border: none; padding: 5px 10px; border-radius: 3px; cursor: pointer;"
+      removeButton.className = "bg-gradient-to-r from-red-500 to-pink-600 hover:from-red-600 hover:to-pink-700 text-white px-3 py-1 rounded-md text-sm font-medium transition-all transform hover:scale-105 shadow-md"
       removeButton.dataset.todoId = todo.id
       removeButton.addEventListener("click", this.remove.bind(this))
       

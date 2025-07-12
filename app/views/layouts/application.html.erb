@@ -22,7 +22,9 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="bg-gray-50 min-h-screen">
+    <main class="container mx-auto px-4 py-8 max-w-4xl">
+      <%= yield %>
+    </main>
   </body>
 </html>

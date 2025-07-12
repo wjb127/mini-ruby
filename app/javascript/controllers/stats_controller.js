@@ -29,22 +29,28 @@ export default class extends Controller {
 
   renderStats(stats) {
     this.displayTarget.innerHTML = `
-      <div style="background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-        <div style="font-size: 24px; font-weight: bold; color: #0c5460;">${stats.total}</div>
-        <div style="font-size: 14px; color: #6c757d;">전체 할일</div>
+      <div class="bg-white rounded-xl p-6 shadow-lg text-center hover:shadow-xl transition-shadow">
+        <div class="text-3xl font-bold text-blue-600 mb-2">${stats.total}</div>
+        <div class="text-gray-600 font-medium">전체 할일</div>
       </div>
-      <div style="background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-        <div style="font-size: 24px; font-weight: bold; color: #28a745;">${stats.completed}</div>
-        <div style="font-size: 14px; color: #6c757d;">완료된 할일</div>
+      <div class="bg-white rounded-xl p-6 shadow-lg text-center hover:shadow-xl transition-shadow">
+        <div class="text-3xl font-bold text-green-600 mb-2">${stats.completed}</div>
+        <div class="text-gray-600 font-medium">완료된 할일</div>
       </div>
-      <div style="background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-        <div style="font-size: 24px; font-weight: bold; color: #ffc107;">${stats.pending}</div>
-        <div style="font-size: 14px; color: #6c757d;">대기 중인 할일</div>
-      </div>
-      <div style="background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-        <div style="font-size: 24px; font-weight: bold; color: #007bff;">${stats.completion_rate}%</div>
-        <div style="font-size: 14px; color: #6c757d;">완료율</div>
+      <div class="bg-white rounded-xl p-6 shadow-lg text-center hover:shadow-xl transition-shadow">
+        <div class="text-3xl font-bold text-yellow-600 mb-2">${stats.pending}</div>
+        <div class="text-gray-600 font-medium">대기 중인 할일</div>
       </div>
     `
+    
+    // 완료율이 있는 경우에만 추가 (4개 이상의 통계가 있을 때)
+    if (stats.completion_rate !== undefined) {
+      this.displayTarget.innerHTML += `
+        <div class="bg-white rounded-xl p-6 shadow-lg text-center hover:shadow-xl transition-shadow">
+          <div class="text-3xl font-bold text-purple-600 mb-2">${stats.completion_rate}%</div>
+          <div class="text-gray-600 font-medium">완료율</div>
+        </div>
+      `
+    }
   }
 } 
