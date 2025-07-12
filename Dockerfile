@@ -65,7 +65,7 @@ COPY --from=build /rails /rails
 RUN groupadd --system --gid 1000 rails && \
     useradd rails --uid 1000 --gid 1000 --create-home --shell /bin/bash && \
     mkdir -p /data && \
-    chown -R rails:rails db log storage tmp /data app/assets/builds
+    chown -R rails:rails db log storage tmp /data app/assets/builds public
 USER 1000:1000
 
 # Entrypoint prepares the database.
